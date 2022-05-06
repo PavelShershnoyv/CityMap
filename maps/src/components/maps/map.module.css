@@ -1,4 +1,41 @@
 .map {
     width: 100%;
-    height: 50vh;
+    height: 80vh;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: black;
+}
+
+.description {
+    align-self: start;
+}
+
+.vote {
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+}
+
+.likesContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.like {
+    color: grey;
+    font-size: 40px;
+}
+
+.count {
+    font-size: 12px;
+}
+
+.options {
+    display: flex;
+    gap: 10px;
 }

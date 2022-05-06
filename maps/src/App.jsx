@@ -1,11 +1,11 @@
 import React from 'react';
-import { Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import './App.css';
-import { Header } from './components/header/header';
 import { Layout } from './components/layout/layout';
 import { DefaultMap } from './components/maps/defaultMap';
 import { PastMap } from './components/maps/pastMap';
 import { FutureMap } from './components/maps/futureMap';
+import { MyMap } from './components/maps/myMap'
 
 
 function App() {
@@ -16,6 +16,7 @@ function App() {
           <Route index element={<DefaultMap />}/>
           <Route path="past" element={<PastMap />}/>
           <Route path="future" element={<FutureMap />}/>
+          <Route path="myMap" element={<MyMap />}/>
         </Route>
       </Routes>
     </>
