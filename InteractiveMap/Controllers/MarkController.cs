@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace InteractiveMap.Web.Controllers;
 
 [Route("api/marks")]
-public class MarkController : ApiController
+public class MarkController : ApiControllerBase
 {
     private readonly IPublicMarkService _markService;
 

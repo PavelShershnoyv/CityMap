@@ -19,7 +19,7 @@ public class UserMapLayerService : IUserMapLayerService
         _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
     }
 
-    public async Task<int> CreateLayerAsync(int userId, MapLayerRequest request, CancellationToken cancellationToken = default)
+    public async Task<int> CreateLayerAsync(string userId, MapLayerRequest request, CancellationToken cancellationToken = default)
     {
         var entity = _mapper.Map<UserMapLayer>(request);
 
@@ -29,7 +29,7 @@ public class UserMapLayerService : IUserMapLayerService
         return entity.Id;
     }
 
-    public async Task<MapLayerListDto> GetLayersAsync(int userId, CancellationToken cancellationToken = default)
+    public async Task<MapLayerListDto> GetLayersAsync(string userId, CancellationToken cancellationToken = default)
     {
         var layers = await _context.UserMapLayers
             .Where(layer => layer.UserId == userId)
@@ -39,7 +39,7 @@ public class UserMapLayerService : IUserMapLayerService
         return new MapLayerListDto { MapLayers = layers };
     }
 
-    public async Task<MapLayerDto> GetLayerAsync(int userId, int id, CancellationToken cancellationToken = default)
+    public async Task<MapLayerDto> GetLayerAsync(string userId, int id, CancellationToken cancellationToken = default)
     {
         var entity = await _context.UserMapLayers
             .Include(layer => layer.Marks)
@@ -54,7 +54,7 @@ public class UserMapLayerService : IUserMapLayerService
     }
 
 
-    public async Task UpdateLayerAsync(int userId, int id, MapLayerRequest request, CancellationToken cancellationToken = default)
+    public async Task UpdateLayerAsync(string userId, int id, MapLayerRequest request, CancellationToken cancellationToken = default)
     {
         var entity = await _context.UserMapLayers
         .FirstOrDefaultAsync(layer => layer.Id == id && layer.UserId == userId, cancellationToken);
@@ -70,7 +70,7 @@ public class UserMapLayerService : IUserMapLayerService
         await _context.SaveChangesAsync(cancellationToken);
     }
 
-    public async Task DeleteLayerAsync(int userId, int id, CancellationToken cancellationToken = default)
+    public async Task DeleteLayerAsync(string userId, int id, CancellationToken cancellationToken = default)
     {
         var entity = await _context.UserMapLayers
         .FirstOrDefaultAsync(layer => layer.Id == id && layer.UserId == userId, cancellationToken);

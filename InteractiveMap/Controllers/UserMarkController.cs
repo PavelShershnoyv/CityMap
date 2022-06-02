@@ -7,7 +7,7 @@ namespace InteractiveMap.Web.Controllers;
 
 [Route("api/user-marks")]
 [Authorize]
-public class UserMarkController : ApiController
+public class UserMarkController : ApiControllerBase
 {
     private readonly IUserMarkService _markService;
 

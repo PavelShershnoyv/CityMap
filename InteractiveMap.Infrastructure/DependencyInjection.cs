@@ -2,6 +2,7 @@
 using InteractiveMap.Infrastructure.Identity;
 using InteractiveMap.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -16,15 +17,10 @@ namespace InteractiveMap.Infrastructure
 
             services.AddScoped<IMapsDbContext>(provider => provider.GetRequiredService<MapsDbContext>());
 
-            services
-                .AddIdentityCore<ApplicationUser>()
-                .AddUserStore<MapsDbContext>();
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<MapsDbContext>();
 
-            services.AddIdentityServer();
-
-            services.AddAuthentication("Bearer").AddJwtBearer();
-
-            services.AddAuthorization();
+            services.AddAuthentication().AddCookie("Authorization");
 
             return services;
         }

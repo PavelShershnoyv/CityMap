@@ -5,7 +5,7 @@ namespace InteractiveMap.Web.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public abstract class ApiController : ControllerBase
+public abstract class ApiControllerBase : ControllerBase
 {
     private ICurrentUserService _currentUserService;
 

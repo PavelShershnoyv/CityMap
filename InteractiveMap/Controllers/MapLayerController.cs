@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace InteractiveMap.Web.Controllers;
 
 [Route("api/layers")]
-public class MapLayerController : ApiController
+public class MapLayerController : ApiControllerBase
 {
     private readonly IPublicMapLayerService _mapLayerService;
 

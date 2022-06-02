@@ -1,11 +1,12 @@
 ﻿using InteractiveMap.Application.Common.Interfaces;
 using InteractiveMap.Core.Entities;
 using InteractiveMap.Infrastructure.Persistence.EntityTypeConfigurations;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace InteractiveMap.Infrastructure.Persistence;
 
-public class MapsDbContext : DbContext, IMapsDbContext
+public class MapsDbContext : IdentityDbContext, IMapsDbContext
 {
     public DbSet<UserMark> UserMarks => Set<UserMark>();
 

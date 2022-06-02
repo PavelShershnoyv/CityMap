@@ -7,7 +7,7 @@ namespace InteractiveMap.Web.Controllers;
 
 [Route("api/user-layers")]
 [Authorize]
-public class UserMapLayerController : ApiController
+public class UserMapLayerController : ApiControllerBase
 {
     private readonly IUserMapLayerService _mapLayerService;
 
