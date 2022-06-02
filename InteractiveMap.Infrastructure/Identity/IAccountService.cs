@@ -5,5 +5,5 @@ namespace InteractiveMap.Application.Common.Interfaces;
 public interface IAccountService
 {
     Task RegisterAsync(RegisterRequest request);
-    Task AuthenticateaAsync(AuthenticationRequest request);
+    Task LoginAsync(AuthenticationRequest request);
 }

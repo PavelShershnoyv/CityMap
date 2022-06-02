@@ -8,7 +8,7 @@ export interface IPlacemark {
     coords: number[];
 }
 
-export const MainMap: React.FC = () => {
+export const MainMap: React.FC<any> = ({children}) => {
     const [placemarks, setPlacemarks] = useState<IPlacemark[]>([]);
     
     const MapHandler = (e: MapEvent) => {
@@ -27,13 +27,7 @@ export const MainMap: React.FC = () => {
                 defaultOptions={{ suppressMapOpenBlock: true }}
                 className={styles.map}
                 onClick={MapHandler}>
-                {placemarks.map(pl =>
-                    <Placemark
-                        geometry={pl.coords}
-                        key={pl.id}
-                        options={{ iconColor: 'red', preset: 'islands#Icon' }}
-                    />)
-                }
+                {children}
             </Map>
         </YMaps >
     )

@@ -44,7 +44,7 @@ public class AccountService : IAccountService
         await _signInManager.SignInAsync(user, isPersistent: false);
     }
 
-    public async Task AuthenticateaAsync(AuthenticationRequest request)
+    public async Task LoginAsync(AuthenticationRequest request)
     {
         var user = await _userManager.FindByEmailAsync(request.Email);
 

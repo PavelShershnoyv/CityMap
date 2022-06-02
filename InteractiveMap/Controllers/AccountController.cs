@@ -15,6 +15,9 @@ namespace InteractiveMap.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Login() 
+        public async Task<IActionResult> LoginAsync(AuthenticationRequest request) 
+        {
+            
+        }
     }
 }
