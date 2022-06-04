@@ -5,9 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5775d08c-06f2-4a51-9b04-40d3b3f1bed1" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/InteractiveMap/Client/src/components/ModalFills/DefaultPlacemark.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InteractiveMap/Client/src/components/ModalFills/DefaultPlacemark.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/InteractiveMap/Client/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/src/components/header/header.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/InteractiveMap/Client/src/components/header/header.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/src/components/header/header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/InteractiveMap/Client/src/components/header/header.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/src/components/maps/mainMap.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/InteractiveMap/Client/src/components/maps/mainMap.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/src/components/maps/map.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/InteractiveMap/Client/src/components/maps/map.module.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +64,11 @@
       <workItem from="1654344640846" duration="1016000" />
       <workItem from="1654354688908" duration="57000" />
       <workItem from="1654354761191" duration="12000" />
-      <workItem from="1654354786826" duration="133000" />
+      <workItem from="1654354786826" duration="868000" />
+      <workItem from="1654355740414" duration="1703000" />
+      <workItem from="1654365452649" duration="37000" />
+      <workItem from="1654365502866" duration="1018000" />
+      <workItem from="1654366553187" duration="1771000" />
     </task>
     <servers />
   </component>

@@ -3,6 +3,8 @@
     display: flex;
     padding: 1em;
     align-items: center;
+    height: 10vh;
+    box-sizing: border-box;
 }
 
 .navigation {

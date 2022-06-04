@@ -16,7 +16,7 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route path="default" element={<DefaultMap />} />
+          <Route index element={<DefaultMap />} />
           <Route path="past" element={<PastMap />} />
           <Route path="future" element={<FutureMap />} />
         </Route>
