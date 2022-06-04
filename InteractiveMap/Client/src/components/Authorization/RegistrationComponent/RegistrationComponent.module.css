@@ -1,0 +1,50 @@
+.mainWindow {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.error {
+  color: red;
+  font-weight: normal;
+  font-size: 14px;
+}
+
+.btn {
+  width: 170px;
+  margin-left: auto;
+  margin-top: 20px;
+  margin-right: 20px;
+  background-color: #1E90FF;
+  font-size: 16px;
+  border: none;
+  height: 30px;
+  border-radius: 15px;
+  cursor: pointer;
+  color: #fff;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: auto;
+}
+
+.email:active,
+:hover,
+:focus,
+.password:active,
+:hover,
+:focus {
+  outline: 0;
+  outline-offset: 0;
+}
+
+.email,
+.password {
+  width: 230px;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  border: none;
+  border-bottom: 1px solid #333333;
+}

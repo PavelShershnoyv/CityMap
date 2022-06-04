@@ -1,0 +1,50 @@
+.wrapperPage {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.wrapperForm {
+  margin-top: auto;
+  height: 250px;
+  width: 400px;
+  margin-top: -125px;
+  border: 1px solid #333333;
+  border-radius: 10px;
+  position: absolute;
+  top: 50%;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.form {
+  color: #1E90FF;
+}
+
+.title {
+  border-bottom: 1px solid #333333;
+  padding: 8px 0px;
+  display: flex;
+
+}
+
+.enter {
+  border-right: 3px solid #1E90FF;
+  margin-left: 40px;
+  padding-right: 30px;
+}
+
+.register {
+  padding-left: 30px;
+}
+
+.enterText,
+.registerText {
+  text-decoration: none;
+  color: #1E90FF;
+}
+
+.enterText:focus, .registerText:focus {
+  text-decoration: none;
+  color: #333333;
+}
