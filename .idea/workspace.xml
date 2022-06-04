@@ -5,92 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5775d08c-06f2-4a51-9b04-40d3b3f1bed1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/rezh.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap.Application/Common/Exceptions/ApplicationException.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap.Application/Common/Exceptions/NotFoundException.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap.Application/Common/Interfaces/ICurrentUserService.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap.Application/Common/Interfaces/IMapsDbContext.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap.Application/Common/Mappings/MapsProfile.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap.Application/Common/Types/MarkDto.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap.Application/DependencyInjection.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap.Application/InteractiveMap.Application.csproj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap.Application/MapLayerService/IPublicMapLayerService.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap.Application/MapLayerService/IUserMapLayerService.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap.Application/MapLayerService/PublicMapLayerService.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap.Application/MapLayerService/Types/MapLayerBaseDto.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap.Application/MapLayerService/Types/MapLayerDto.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap.Application/MapLayerService/Types/MapLayerListDto.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap.Application/MapLayerService/Types/MapLayerRequest.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap.Application/MapLayerService/UserMapLayerService.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap.Application/MarkService/IPublicMarkService.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap.Application/MarkService/IUserMarkService.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap.Application/MarkService/PublicMarkService.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap.Application/MarkService/Types/MarkBaseDto.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap.Application/MarkService/Types/MarkDto.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap.Application/MarkService/Types/MarkListDto.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap.Application/MarkService/Types/MarkRequest.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap.Application/MarkService/UserMarkService.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap.Core/Entities/Base/BaseEntity.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap.Core/Entities/Base/IEntity.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap.Core/Entities/MapLayer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap.Core/Entities/Mark.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap.Core/Entities/MarkDetails.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap.Core/Entities/MarkType.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap.Core/Entities/UserMapLayer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap.Core/Entities/UserMark.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap.Core/InteractiveMap.Core.csproj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap.Core/ValueObjects/Position.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap.Infrastructure/DependencyInjection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InteractiveMap.Infrastructure/DependencyInjection.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap.Infrastructure/Identity/ApplicationUser.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap.Infrastructure/InteractiveMap.Infrastructure.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/InteractiveMap.Infrastructure/InteractiveMap.Infrastructure.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap.Infrastructure/Persistence/DbInitializer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap.Infrastructure/Persistence/EntityTypeConfigurations/MapLayerConfiguration.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap.Infrastructure/Persistence/EntityTypeConfigurations/UserMapLayerConfiguration.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap.Infrastructure/Persistence/MapsDbContext.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/public/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/public/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/public/logo192.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/public/logo512.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/public/manifest.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/public/robots.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/src/App.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/src/App.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/src/App.test.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/src/components/header/active.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/src/components/header/header.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/src/components/header/header.module.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/src/components/layout/layout.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/src/components/maps/defaultMap.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/src/components/maps/futureMap.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/src/components/maps/map.module.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/src/components/maps/myMap.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/src/components/maps/pastMap.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/src/components/modal/modal.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/src/components/modal/modal.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/src/images/Arms.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/src/images/NavList.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/src/index.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/src/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/src/logo.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/src/reportWebVitals.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/src/setupTests.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap/Controllers/ApiController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap/Controllers/MapLayerController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap/Controllers/MarkController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap/Controllers/UserMapLayerController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap/Controllers/UserMarkController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap/InteractiveMap.Web.csproj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap/Program.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap/appsettings.Development.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap/appsettings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/src/components/header/header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/InteractiveMap/Client/src/components/header/header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/src/components/maps/mainMap.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/InteractiveMap/Client/src/components/maps/mainMap.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,6 +36,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2021.3.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -133,6 +51,15 @@
       <workItem from="1654169848858" duration="64000" />
       <workItem from="1654171029705" duration="53000" />
       <workItem from="1654171100730" duration="13000" />
+      <workItem from="1654194601449" duration="33000" />
+      <workItem from="1654194654074" duration="183000" />
+      <workItem from="1654243505364" duration="182000" />
+      <workItem from="1654243703818" duration="12000" />
+      <workItem from="1654325862921" duration="782000" />
+      <workItem from="1654344640846" duration="1016000" />
+      <workItem from="1654354688908" duration="57000" />
+      <workItem from="1654354761191" duration="12000" />
+      <workItem from="1654354786826" duration="133000" />
     </task>
     <servers />
   </component>
