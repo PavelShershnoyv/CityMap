@@ -1,4 +1,4 @@
-using InteractiveMap.Application.Common.Interfaces;
+using System.Security.Claims;
 using Microsoft.AspNetCore.Mvc;
 
 namespace InteractiveMap.Web.Controllers;
@@ -7,8 +7,5 @@ namespace InteractiveMap.Web.Controllers;
 [Route("api/[controller]")]
 public abstract class ApiControllerBase : ControllerBase
 {
-    private ICurrentUserService _currentUserService;
-
-    protected ICurrentUserService CurrentUserService =>
-        _currentUserService ??= HttpContext.RequestServices.GetRequiredService<ICurrentUserService>();
+    protected Guid UserId => User.Identity.IsAuthenticated ? Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)) : Guid.Empty;
 }

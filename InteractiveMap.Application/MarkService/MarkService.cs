@@ -1,37 +1,34 @@
 ﻿using AutoMapper;
 using InteractiveMap.Application.Common.Exceptions;
 using InteractiveMap.Application.Common.Interfaces;
+using InteractiveMap.Application.Common.Types;
 using InteractiveMap.Application.MarkService.Types;
 using InteractiveMap.Core.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace InteractiveMap.Application.MarkService;
 
-public class PublicMarkService : IPublicMarkService
+public class MarkService : IMarkService
 {
-    private readonly IMapsDbContext _context;
+    private readonly IMapContext _context;
     private readonly IMapper _mapper;
 
-    public PublicMarkService(IMapsDbContext context, IMapper mapper)
+    public MarkService(IMapContext context, IMapper mapper)
     {
-
         _context = context ?? throw new ArgumentNullException(nameof(context));
         _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
     }
 
     public async Task<int> CreateMarkAsync(MarkRequest request, CancellationToken cancellationToken = default)
     {
-        var entity = new Mark
+        var layer = await _context.PublicMapLayers.FirstOrDefaultAsync(layer => layer.Id == request.MapLayerId, cancellationToken);
+
+        if (layer == null)
         {
-            Position = request.Position,
-            Title = request.Title,
-            MapLayerId = request.MapLayerId,
-            Details = new MarkDetails
-            {
-                Description = request.Description,
-                Images = request.Images
-            }
-        };
+            throw new NotFoundException(nameof(MapLayer), request.MapLayerId);
+        }
+
+        var entity = _mapper.Map<Mark>(request);
 
         await _context.PublicMarks.AddAsync(entity, cancellationToken);
         await _context.SaveChangesAsync(cancellationToken);
@@ -39,7 +36,7 @@ public class PublicMarkService : IPublicMarkService
         return entity.Id;
     }
 
-    public async Task<MarkListDto> GetMarksAsync(int mapLayerId, CancellationToken cancellationToken = default)
+    public async Task<IEnumerable<MarkBaseDto>> GetMarksAsync(int mapLayerId, CancellationToken cancellationToken = default)
     {
         var layer = await _context.PublicMapLayers
             .Include(layer => layer.Marks)
@@ -50,15 +47,14 @@ public class PublicMarkService : IPublicMarkService
             throw new NotFoundException(nameof(MapLayer), mapLayerId);
         }
 
-        var entities = layer.Marks.Select(_mapper.Map<MarkBaseDto>).ToList();
-
-        return new MarkListDto { Marks = entities };
+        return layer.Marks.Select(_mapper.Map<MarkBaseDto>).ToList();
     }
 
     public async Task<MarkDto> GetMarkAsync(int id, CancellationToken cancellationToken = default)
     {
         var entity = await _context.PublicMarks
              .Include(entity => entity.Details)
+             .ThenInclude(details => details.Images)
              .FirstOrDefaultAsync(mark => mark.Id == id, cancellationToken);
 
         if (entity == null)
@@ -66,20 +62,12 @@ public class PublicMarkService : IPublicMarkService
             throw new NotFoundException(nameof(Mark), id);
         }
 
-        return new MarkDto
-        {
-            Id = entity.Id,
-            Position = entity.Position,
-            Title = entity.Title,
-            Description = entity.Details.Description,
-            Images = entity.Details.Images
-        };
+        return _mapper.Map<MarkDto>(entity);
     }
 
     public async Task UpdateMarkAsync(int id, MarkRequest request, CancellationToken cancellationToken = default)
     {
-        var entity = await _context.PublicMarks
-            .FirstOrDefaultAsync(mark => mark.Id == id, cancellationToken);
+        var entity = await _context.PublicMarks.FirstOrDefaultAsync(mark => mark.Id == id, cancellationToken);
 
         if (entity == null)
         {
@@ -96,8 +84,7 @@ public class PublicMarkService : IPublicMarkService
 
     public async Task DeleteMarkAsync(int id, CancellationToken cancellationToken = default)
     {
-        var entity = await _context.PublicMarks
-           .FirstOrDefaultAsync(mark => mark.Id == id, cancellationToken);
+        var entity = await _context.PublicMarks.FirstOrDefaultAsync(mark => mark.Id == id, cancellationToken);
 
         if (entity == null)
         {

@@ -7,6 +7,6 @@ public class MarkRequest
     public Position Position { get; set; }
     public string Title { get; set; }
     public string Description { get; set; }
-    public ICollection<byte[]> Images { get; set; }
+    public ICollection<Image> Images { get; set; }
     public int MapLayerId { get; set; }
 }

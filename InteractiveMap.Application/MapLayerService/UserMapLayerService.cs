@@ -5,23 +5,23 @@ using InteractiveMap.Application.Common.Interfaces;
 using InteractiveMap.Application.MapLayerService.Types;
 using InteractiveMap.Core.Entities;
 using Microsoft.EntityFrameworkCore;
-
 namespace InteractiveMap.Application.MapLayerService;
 
 public class UserMapLayerService : IUserMapLayerService
 {
-    private readonly IMapsDbContext _context;
+    private readonly IMapContext _context;
     private readonly IMapper _mapper;
 
-    public UserMapLayerService(IMapsDbContext context, IMapper mapper)
+    public UserMapLayerService(IMapContext context, IMapper mapper)
     {
         _context = context ?? throw new ArgumentNullException(nameof(context));
         _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
     }
 
-    public async Task<int> CreateLayerAsync(string userId, MapLayerRequest request, CancellationToken cancellationToken = default)
+    public async Task<int> CreateLayerAsync(Guid userId, MapLayerRequest request, CancellationToken cancellationToken = default)
     {
         var entity = _mapper.Map<UserMapLayer>(request);
+        entity.UserId = userId;
 
         await _context.UserMapLayers.AddAsync(entity, cancellationToken);
         await _context.SaveChangesAsync(cancellationToken);
@@ -29,23 +29,21 @@ public class UserMapLayerService : IUserMapLayerService
         return entity.Id;
     }
 
-    public async Task<MapLayerListDto> GetLayersAsync(string userId, CancellationToken cancellationToken = default)
+    public async Task<IEnumerable<MapLayerBaseDto>> GetLayersAsync(Guid userId, CancellationToken cancellationToken = default)
     {
-        var layers = await _context.UserMapLayers
+        return await _context.UserMapLayers
             .Where(layer => layer.UserId == userId)
             .ProjectTo<MapLayerBaseDto>(_mapper.ConfigurationProvider)
             .ToListAsync(cancellationToken);
-
-        return new MapLayerListDto { MapLayers = layers };
     }
 
-    public async Task<MapLayerDto> GetLayerAsync(string userId, int id, CancellationToken cancellationToken = default)
+    public async Task<MapLayerDto> GetLayerAsync(Guid userId, int id, CancellationToken cancellationToken = default)
     {
         var entity = await _context.UserMapLayers
             .Include(layer => layer.Marks)
-            .FirstOrDefaultAsync(layer => layer.Id == id && layer.UserId == userId, cancellationToken);
+            .FirstOrDefaultAsync(layer => layer.Id == id, cancellationToken);
 
-        if (entity == null)
+        if (entity == null || entity.UserId != userId)
         {
             throw new NotFoundException(nameof(UserMapLayer), id);
         }
@@ -53,13 +51,11 @@ public class UserMapLayerService : IUserMapLayerService
         return _mapper.Map<MapLayerDto>(entity);
     }
 
-
-    public async Task UpdateLayerAsync(string userId, int id, MapLayerRequest request, CancellationToken cancellationToken = default)
+    public async Task UpdateLayerAsync(Guid userId, int id, MapLayerRequest request, CancellationToken cancellationToken = default)
     {
-        var entity = await _context.UserMapLayers
-        .FirstOrDefaultAsync(layer => layer.Id == id && layer.UserId == userId, cancellationToken);
+        var entity = await _context.UserMapLayers.FirstOrDefaultAsync(layer => layer.Id == id, cancellationToken);
 
-        if (entity == null)
+        if (entity == null || entity.UserId != userId)
         {
             throw new NotFoundException(nameof(UserMapLayer), id);
         }
@@ -70,12 +66,11 @@ public class UserMapLayerService : IUserMapLayerService
         await _context.SaveChangesAsync(cancellationToken);
     }
 
-    public async Task DeleteLayerAsync(string userId, int id, CancellationToken cancellationToken = default)
+    public async Task DeleteLayerAsync(Guid userId, int id, CancellationToken cancellationToken = default)
     {
-        var entity = await _context.UserMapLayers
-        .FirstOrDefaultAsync(layer => layer.Id == id && layer.UserId == userId, cancellationToken);
+        var entity = await _context.UserMapLayers.FirstOrDefaultAsync(layer => layer.Id == id, cancellationToken);
 
-        if (entity == null)
+        if (entity == null || entity.UserId != userId)
         {
             throw new NotFoundException(nameof(UserMapLayer), id);
         }

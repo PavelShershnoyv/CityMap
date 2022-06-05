@@ -2,5 +2,5 @@
 
 public class UserMark : Mark
 {
-    public string UserId { get; set; }
+    public Guid UserId { get; set; }
 }

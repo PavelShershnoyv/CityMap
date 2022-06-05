@@ -5,6 +5,7 @@ namespace InteractiveMap.Core.Entities;
 
 public class Mark : BaseEntity
 {
+    public MarkType Type { get; set; }
     public Position Position { get; set; }
     public string Title { get; set; }
     public MarkDetails Details { get; set; }

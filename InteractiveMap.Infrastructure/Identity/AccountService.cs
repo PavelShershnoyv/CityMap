@@ -34,7 +34,7 @@ public class AccountService : IAccountService
 
         var user = new ApplicationUser { Email = request.Email, UserName = request.UserName };
 
-        var result = await _userManager.CreateAsync(user);
+        var result = await _userManager.CreateAsync(user, request.Password);
 
         if (!result.Succeeded)
         {
@@ -53,6 +53,16 @@ public class AccountService : IAccountService
             throw new ApplicationException($"No users with email {request.Email}.");
         }
 
-        await _signInManager.PasswordSignInAsync(user, request.Password, request.RememberMe, false);
+        var result = await _signInManager.PasswordSignInAsync(user, request.Password, request.RememberMe, false);
+
+        if (!result.Succeeded)
+        {
+            throw new ApplicationException($"Invalid password.");
+        }
+    }
+
+    public async Task LogoutAsync()
+    {
+        await _signInManager.SignOutAsync();
     }
 }

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using InteractiveMap.Application.Common.Exceptions;
 using InteractiveMap.Application.Common.Interfaces;
+using InteractiveMap.Application.Common.Types;
 using InteractiveMap.Application.MarkService.Types;
 using InteractiveMap.Core.Entities;
 using Microsoft.EntityFrameworkCore;
@@ -9,29 +10,26 @@ namespace InteractiveMap.Application.MarkService;
 
 public class UserMarkService : IUserMarkService
 {
-    private readonly IMapsDbContext _context;
+    private readonly IMapContext _context;
     private readonly IMapper _mapper;
 
-    public UserMarkService(IMapsDbContext context, IMapper mapper)
+    public UserMarkService(IMapContext context, IMapper mapper)
     {
         _context = context ?? throw new ArgumentNullException(nameof(context));
         _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
     }
 
-    public async Task<int> CreateMarkAsync(int userId, MarkRequest request, CancellationToken cancellationToken = default)
+    public async Task<int> CreateMarkAsync(Guid userId, MarkRequest request, CancellationToken cancellationToken = default)
     {
-        var entity = new UserMark
+        var layer = await _context.UserMapLayers.FirstOrDefaultAsync(layer => layer.Id == request.MapLayerId, cancellationToken);
+
+        if (layer == null || layer.UserId != userId)
         {
-            UserId = userId,
-            Position = request.Position,
-            Title = request.Title,
-            MapLayerId = request.MapLayerId,
-            Details = new MarkDetails
-            {
-                Description = request.Description,
-                Images = request.Images
-            }
-        };
+            throw new NotFoundException(nameof(UserMapLayer), request.MapLayerId);
+        }
+
+        var entity = _mapper.Map<UserMark>(request);
+        entity.UserId = userId;
 
         await _context.UserMarks.AddAsync(entity, cancellationToken);
         await _context.SaveChangesAsync(cancellationToken);
@@ -39,49 +37,40 @@ public class UserMarkService : IUserMarkService
         return entity.Id;
     }
 
-    public async Task<MarkListDto> GetMarksAsync(int userId, int mapLayerId, CancellationToken cancellationToken = default)
+    public async Task<IEnumerable<MarkBaseDto>> GetMarksAsync(Guid userId, int mapLayerId, CancellationToken cancellationToken = default)
     {
         var layer = await _context.UserMapLayers
             .Include(layer => layer.Marks)
-            .FirstOrDefaultAsync(layer => layer.Id == mapLayerId && layer.UserId == userId, cancellationToken);
+            .FirstOrDefaultAsync(layer => layer.Id == mapLayerId, cancellationToken);
 
-        if (layer == null)
+        if (layer == null || layer.UserId != userId)
         {
             throw new NotFoundException(nameof(UserMapLayer), mapLayerId);
         }
 
-        var entities = layer.Marks.Select(_mapper.Map<MarkBaseDto>).ToList();
-
-        return new MarkListDto { Marks = entities };
+        return layer.Marks.Select(_mapper.Map<MarkBaseDto>).ToList();
     }
 
-    public async Task<MarkDto> GetMarkAsync(int userId, int id, CancellationToken cancellationToken = default)
+    public async Task<MarkDto> GetMarkAsync(Guid userId, int id, CancellationToken cancellationToken = default)
     {
         var entity = await _context.UserMarks
             .Include(entity => entity.Details)
-            .FirstOrDefaultAsync(mark => mark.Id == id && mark.UserId == userId, cancellationToken);
+            .FirstOrDefaultAsync(mark => mark.Id == id, cancellationToken);
 
-        if (entity == null)
+        if (entity == null || entity.UserId == userId)
         {
             throw new NotFoundException(nameof(Mark), id);
         }
 
-        return new MarkDto
-        {
-            Id = entity.Id,
-            Position = entity.Position,
-            Title = entity.Title,
-            Description = entity.Details.Description,
-            Images = entity.Details.Images
-        };
+        return _mapper.Map<MarkDto>(entity);
     }
 
-    public async Task UpdateMarkAsync(int userId, int id, MarkRequest request, CancellationToken cancellationToken = default)
+    public async Task UpdateMarkAsync(Guid userId, int id, MarkRequest request, CancellationToken cancellationToken = default)
     {
         var entity = await _context.UserMarks
-            .FirstOrDefaultAsync(mark => mark.Id == id && mark.UserId == userId, cancellationToken);
+            .FirstOrDefaultAsync(mark => mark.Id == id, cancellationToken);
 
-        if (entity == null)
+        if (entity == null || entity.UserId != userId)
         {
             throw new NotFoundException(nameof(Mark), id);
         }
@@ -94,12 +83,12 @@ public class UserMarkService : IUserMarkService
         await _context.SaveChangesAsync(cancellationToken);
     }
 
-    public async Task DeleteMarkAsync(int userId, int id, CancellationToken cancellationToken = default)
+    public async Task DeleteMarkAsync(Guid userId, int id, CancellationToken cancellationToken = default)
     {
         var entity = await _context.UserMarks
-            .FirstOrDefaultAsync(mark => mark.Id == id && mark.UserId == userId, cancellationToken);
+            .FirstOrDefaultAsync(mark => mark.Id == id, cancellationToken);
 
-        if (entity == null)
+        if (entity == null || entity.UserId != userId)
         {
             throw new NotFoundException(nameof(Mark), id);
         }
@@ -107,4 +96,5 @@ public class UserMarkService : IUserMarkService
         _context.UserMarks.Remove(entity);
         await _context.SaveChangesAsync(cancellationToken);
     }
+
 }

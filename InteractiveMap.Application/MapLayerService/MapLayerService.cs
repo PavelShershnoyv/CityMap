@@ -5,48 +5,56 @@ using InteractiveMap.Application.Common.Interfaces;
 using InteractiveMap.Application.MapLayerService.Types;
 using InteractiveMap.Core.Entities;
 using Microsoft.EntityFrameworkCore;
+using ApplicationException = InteractiveMap.Application.Common.Exceptions.ApplicationException;
 
 namespace InteractiveMap.Application.MapLayerService;
 
-public class PublicMapLayerService : IPublicMapLayerService
+public class MapLayerService : IMapLayerService
 {
-    private readonly IMapsDbContext _context;
+    private readonly IMapContext _context;
     private readonly IMapper _mapper;
 
-    public PublicMapLayerService(IMapsDbContext context, IMapper mapper)
+    public MapLayerService(IMapContext context, IMapper mapper)
     {
         _context = context ?? throw new ArgumentNullException(nameof(context));
         _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
     }
 
-    public async Task<int> CreateLayerAsync(MapLayerRequest request, CancellationToken cancellationToken = default)
+    public async Task<string> CreateLayerAsync(MapLayerRequest request, CancellationToken cancellationToken = default)
     {
+        var existingEntity = await _context.PublicMapLayers
+            .FirstOrDefaultAsync(layer => layer.Title == request.Title, cancellationToken);
+
+        if (existingEntity != null)
+        {
+            throw new ApplicationException($"{nameof(MapLayer)} {request.Title} already exists.");
+        }
+
         var entity = _mapper.Map<MapLayer>(request);
+
 
         await _context.PublicMapLayers.AddAsync(entity, cancellationToken);
         await _context.SaveChangesAsync();
 
-        return entity.Id;
+        return entity.Title;
     }
 
-    public async Task<MapLayerListDto> GetLayersAsync(CancellationToken cancellationToken = default)
+    public async Task<IEnumerable<MapLayerBaseDto>> GetLayersAsync(CancellationToken cancellationToken = default)
     {
-        var layers = await _context.PublicMapLayers
+        return await _context.PublicMapLayers
             .ProjectTo<MapLayerBaseDto>(_mapper.ConfigurationProvider)
             .ToListAsync(cancellationToken);
-
-        return new MapLayerListDto { MapLayers = layers };
     }
 
-    public async Task<MapLayerDto> GetLayerAsync(int id, CancellationToken cancellationToken = default)
+    public async Task<MapLayerDto> GetLayerAsync(string title, CancellationToken cancellationToken = default)
     {
         var entity = await _context.PublicMapLayers
             .Include(layer => layer.Marks)
-            .FirstOrDefaultAsync(layer => layer.Id == id, cancellationToken);
+            .FirstOrDefaultAsync(layer => layer.Title == title, cancellationToken);
 
         if (entity == null)
         {
-            throw new NotFoundException(nameof(MapLayer), id);
+            throw new NotFoundException(nameof(MapLayer), title);
         }
 
         return _mapper.Map<MapLayerDto>(entity);
@@ -54,7 +62,7 @@ public class PublicMapLayerService : IPublicMapLayerService
 
     public async Task UpdateLayerAsync(int id, MapLayerRequest request, CancellationToken cancellationToken = default)
     {
-        var entity = await _context.UserMapLayers
+        var entity = await _context.PublicMapLayers
             .FirstOrDefaultAsync(layer => layer.Id == id, cancellationToken);
 
         if (entity == null)

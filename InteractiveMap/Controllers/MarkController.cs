@@ -1,5 +1,7 @@
-﻿using InteractiveMap.Application.MarkService;
+﻿using InteractiveMap.Application.Common.Types;
+using InteractiveMap.Application.MarkService;
 using InteractiveMap.Application.MarkService.Types;
+using InteractiveMap.Infrastructure.Identity.Defaults;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,15 +10,15 @@ namespace InteractiveMap.Web.Controllers;
 [Route("api/marks")]
 public class MarkController : ApiControllerBase
 {
-    private readonly IPublicMarkService _markService;
+    private readonly IMarkService _markService;
 
-    public MarkController(IPublicMarkService markService)
+    public MarkController(IMarkService markService)
     {
         _markService = markService ?? throw new ArgumentNullException(nameof(markService));
     }
 
     [HttpGet]
-    public async Task<ActionResult<MarkListDto>> GetAll([FromQuery] int layerId)
+    public async Task<ActionResult<IEnumerable<MarkBaseDto>>> GetAll([FromQuery] int layerId)
     {
         var marks = await _markService.GetMarksAsync(layerId);
 
@@ -24,7 +26,7 @@ public class MarkController : ApiControllerBase
     }
 
     [HttpGet("{id}")]
-    public async Task<ActionResult<MarkDto>> Get(int id)
+    public async Task<ActionResult<MarkDto>> GetById(int id)
     {
         var mark = await _markService.GetMarkAsync(id);
 
@@ -32,16 +34,16 @@ public class MarkController : ApiControllerBase
     }
 
     [HttpPost]
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = RoleDefaults.Admin)]
     public async Task<ActionResult<int>> Create(MarkRequest request)
     {
         var id = await _markService.CreateMarkAsync(request);
 
-        return Ok(id);
+        return CreatedAtAction(nameof(GetById), new { id = id });
     }
 
     [HttpPut("{id}")]
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = RoleDefaults.Admin)]
     public async Task<IActionResult> Update(int id, MarkRequest request)
     {
         await _markService.UpdateMarkAsync(id, request);
@@ -50,7 +52,7 @@ public class MarkController : ApiControllerBase
     }
 
     [HttpDelete("{id}")]
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = RoleDefaults.Admin)]
     public async Task<IActionResult> Delete(int id)
     {
         await _markService.DeleteMarkAsync(id);

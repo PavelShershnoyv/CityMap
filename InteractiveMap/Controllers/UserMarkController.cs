@@ -1,4 +1,5 @@
-﻿using InteractiveMap.Application.MarkService;
+﻿using InteractiveMap.Application.Common.Types;
+using InteractiveMap.Application.MarkService;
 using InteractiveMap.Application.MarkService.Types;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -17,33 +18,33 @@ public class UserMarkController : ApiControllerBase
     }
 
     [HttpGet]
-    public async Task<ActionResult<MarkListDto>> GetAll([FromQuery] int layerId)
+    public async Task<ActionResult<IEnumerable<MarkBaseDto>>> GetAll([FromQuery] int layerId)
     {
-        var marks = await _markService.GetMarksAsync(CurrentUserService.UserId, layerId);
+        var marks = await _markService.GetMarksAsync(UserId, layerId);
 
         return Ok(marks);
     }
 
     [HttpGet("{id}")]
-    public async Task<ActionResult<MarkDto>> Get(int id)
+    public async Task<ActionResult<MarkDto>> GetById(int id)
     {
-        var mark = await _markService.GetMarkAsync(CurrentUserService.UserId, id);
+        var mark = await _markService.GetMarkAsync(UserId, id);
 
         return Ok(mark);
     }
 
-    [HttpPost("{id}")]
-    public async Task<ActionResult<int>> Create(MarkRequest request)
+    [HttpPost]
+    public async Task<ActionResult<int>> Create([FromBody] MarkRequest request)
     {
-        var id = await _markService.CreateMarkAsync(CurrentUserService.UserId, request);
+        var id = await _markService.CreateMarkAsync(UserId, request);
 
         return Ok(id);
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> Update(int id, MarkRequest request)
+    public async Task<IActionResult> Update(int id, [FromBody] MarkRequest request)
     {
-        await _markService.UpdateMarkAsync(CurrentUserService.UserId, id, request);
+        await _markService.UpdateMarkAsync(UserId, id, request);
 
         return NoContent();
     }
@@ -51,7 +52,7 @@ public class UserMarkController : ApiControllerBase
     [HttpDelete("{id}")]
     public async Task<IActionResult> Delete(int id)
     {
-        await _markService.DeleteMarkAsync(CurrentUserService.UserId, id);
+        await _markService.DeleteMarkAsync(UserId, id);
 
         return NoContent();
     }

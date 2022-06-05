@@ -17,18 +17,17 @@ public class UserMapLayerController : ApiControllerBase
     }
 
     [HttpGet]
-    [Authorize]
-    public async Task<ActionResult<MapLayerListDto>> GetAll()
+    public async Task<ActionResult<IEnumerable<MapLayerBaseDto>>> GetAll()
     {
-        var mapLayers = await _mapLayerService.GetLayersAsync(CurrentUserService.UserId);
+        var mapLayers = await _mapLayerService.GetLayersAsync(UserId);
 
         return Ok(mapLayers);
     }
 
-    [HttpGet]
-    public async Task<ActionResult<MapLayerDto>> Get(int id)
+    [HttpGet("{id}")]
+    public async Task<ActionResult<MapLayerDto>> GetById(int id)
     {
-        var mapLayer = await _mapLayerService.GetLayerAsync(CurrentUserService.UserId, id);
+        var mapLayer = await _mapLayerService.GetLayerAsync(UserId, id);
 
         return Ok(mapLayer);
     }
@@ -36,7 +35,7 @@ public class UserMapLayerController : ApiControllerBase
     [HttpPost]
     public async Task<ActionResult<int>> Create([FromBody] MapLayerRequest request)
     {
-        var id = await _mapLayerService.CreateLayerAsync(CurrentUserService.UserId, request);
+        var id = await _mapLayerService.CreateLayerAsync(UserId, request);
 
         return Ok(id);
     }
@@ -44,7 +43,7 @@ public class UserMapLayerController : ApiControllerBase
     [HttpPut("{id}")]
     public async Task<IActionResult> Update(int id, [FromBody] MapLayerRequest request)
     {
-        await _mapLayerService.UpdateLayerAsync(CurrentUserService.UserId, id, request);
+        await _mapLayerService.UpdateLayerAsync(UserId, id, request);
 
         return NoContent();
     }
@@ -52,7 +51,7 @@ public class UserMapLayerController : ApiControllerBase
     [HttpDelete("{id}")]
     public async Task<IActionResult> Delete(int id)
     {
-        await _mapLayerService.DeleteLayerAsync(CurrentUserService.UserId, id);
+        await _mapLayerService.DeleteLayerAsync(UserId, id);
 
         return NoContent();
     }

@@ -4,5 +4,5 @@ namespace InteractiveMap.Application.MapLayerService.Types;
 
 public class MapLayerDto : MapLayerBaseDto
 {
-    public ICollection<MarkDto> Marks { get; set; }
+    public ICollection<MarkBaseDto> Marks { get; set; }
 }

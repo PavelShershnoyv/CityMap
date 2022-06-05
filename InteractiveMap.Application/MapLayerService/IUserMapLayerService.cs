@@ -4,9 +4,9 @@ namespace InteractiveMap.Application.MapLayerService;
 
 public interface IUserMapLayerService
 {
-    Task<int> CreateLayerAsync(string userId, MapLayerRequest request, CancellationToken cancellationToken = default);
-    Task<MapLayerListDto> GetLayersAsync(string userId, CancellationToken cancellationToken = default);
-    Task<MapLayerDto> GetLayerAsync(string userId, int id, CancellationToken cancellationToken = default);
-    Task UpdateLayerAsync(string userId, int id, MapLayerRequest request, CancellationToken cancellationToken = default);
-    Task DeleteLayerAsync(string userId, int id, CancellationToken cancellationToken = default);
+    Task<int> CreateLayerAsync(Guid userId, MapLayerRequest request, CancellationToken cancellationToken = default);
+    Task<IEnumerable<MapLayerBaseDto>> GetLayersAsync(Guid userId, CancellationToken cancellationToken = default);
+    Task<MapLayerDto> GetLayerAsync(Guid userId, int id, CancellationToken cancellationToken = default);
+    Task UpdateLayerAsync(Guid userId, int id, MapLayerRequest request, CancellationToken cancellationToken = default);
+    Task DeleteLayerAsync(Guid userId, int id, CancellationToken cancellationToken = default);
 }

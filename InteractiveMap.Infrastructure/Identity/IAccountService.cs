@@ -6,4 +6,5 @@ public interface IAccountService
 {
     Task RegisterAsync(RegisterRequest request);
     Task LoginAsync(AuthenticationRequest request);
+    Task LogoutAsync();
 }

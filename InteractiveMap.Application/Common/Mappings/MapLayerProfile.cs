@@ -4,9 +4,9 @@ using InteractiveMap.Core.Entities;
 
 namespace InteractiveMap.Application.Common.Mappings;
 
-public class MapsProfile : Profile
+public class MapLayerProfile : Profile
 {
-    public MapsProfile()
+    public MapLayerProfile()
     {
         CreateMap<MapLayerRequest, MapLayer>();
         CreateMap<MapLayerRequest, UserMapLayer>();
