@@ -5,14 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5775d08c-06f2-4a51-9b04-40d3b3f1bed1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/InteractiveMap/Client/src/components/ModalFills/DefaultPlacemark.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/InteractiveMap/Client/src/components/ModalFills/DefaultPlacemark.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InteractiveMap/Client/src/components/drawerWrapper/DrawerWrapper.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InteractiveMap/Client/src/hooks/redux.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InteractiveMap/Client/src/sevices/PlacemarkService.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InteractiveMap/Client/src/store/placemarks.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InteractiveMap/Client/src/store/store.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InteractiveMap/Client/src/types/PlacemarkTypes.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/InteractiveMap/Client/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/src/components/header/header.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/InteractiveMap/Client/src/components/header/header.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/InteractiveMap/Client/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/InteractiveMap/Client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/src/components/ModalFills/DefaultPlacemark.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/InteractiveMap/Client/src/components/modalFills/DefaultPlacemark.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/src/components/ModalFills/DefaultPlacemark.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/InteractiveMap/Client/src/components/modalFills/DefaultPlacemark.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/src/components/header/header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/InteractiveMap/Client/src/components/header/header.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/src/components/maps/mainMap.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/InteractiveMap/Client/src/components/maps/mainMap.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/src/components/maps/map.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/InteractiveMap/Client/src/components/maps/map.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/src/components/maps/pastMap.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/InteractiveMap/Client/src/components/maps/pastMap.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/src/store/index.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +28,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -36,6 +51,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -69,6 +85,27 @@
       <workItem from="1654365452649" duration="37000" />
       <workItem from="1654365502866" duration="1018000" />
       <workItem from="1654366553187" duration="1771000" />
+      <workItem from="1654418337626" duration="880000" />
+      <workItem from="1654422969878" duration="1422000" />
+      <workItem from="1654424417783" duration="255000" />
+      <workItem from="1654424694027" duration="1427000" />
+      <workItem from="1654432037456" duration="287000" />
+      <workItem from="1654449679578" duration="98000" />
+      <workItem from="1654451556089" duration="452000" />
+      <workItem from="1654452306309" duration="478000" />
+      <workItem from="1654459569236" duration="1243000" />
+      <workItem from="1654499031954" duration="112000" />
+      <workItem from="1654499222282" duration="18000" />
+      <workItem from="1654508254066" duration="883000" />
+      <workItem from="1654510396352" duration="660000" />
+      <workItem from="1654513288705" duration="1636000" />
+      <workItem from="1654520190912" duration="1222000" />
+      <workItem from="1654535667135" duration="222000" />
+      <workItem from="1654587756734" duration="1193000" />
+      <workItem from="1654593438651" duration="46000" />
+      <workItem from="1654598694267" duration="3872000" />
+      <workItem from="1654602659984" duration="861000" />
+      <workItem from="1654604855786" duration="3377000" />
     </task>
     <servers />
   </component>

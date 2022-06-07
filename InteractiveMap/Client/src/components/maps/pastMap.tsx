@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { YMaps, Map, Placemark } from 'react-yandex-maps';
 import styles from './map.module.css';
 import { Modal } from '../modal/modal';
-import { IPlacemark } from './mainMap';
 
 export const PastMap = () => {
     const [coordinates, setCoordinates] = useState([]);

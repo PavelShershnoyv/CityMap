@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './DefaultPlacemark.module.css';
-import {IPlacemark} from '../maps/mainMap';
+
 
 export const DefaultPlacemark: React.FC = () => {
     return (
