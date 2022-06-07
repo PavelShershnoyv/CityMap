@@ -1,4 +1,5 @@
 ﻿using InteractiveMap.Application.Common.Interfaces;
+using InteractiveMap.Infrastructure.Identity.Defaults;
 using InteractiveMap.Infrastructure.Identity.Types;
 using Microsoft.AspNetCore.Identity;
 
@@ -33,7 +34,6 @@ public class AccountService : IAccountService
         }
 
         var user = new ApplicationUser { Email = request.Email, UserName = request.UserName };
-
         var result = await _userManager.CreateAsync(user, request.Password);
 
         if (!result.Succeeded)
@@ -41,6 +41,7 @@ public class AccountService : IAccountService
             throw new ApplicationException(result.Errors.FirstOrDefault()?.Description);
         }
 
+        await _userManager.AddToRoleAsync(user, RoleDefaults.Basic);
         await _signInManager.SignInAsync(user, isPersistent: false);
     }
 

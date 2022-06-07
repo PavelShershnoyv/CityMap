@@ -1,7 +1,6 @@
 ﻿using System.Reflection;
-using InteractiveMap.Application.MapLayerService;
-using InteractiveMap.Application.MarkService;
-using InteractiveMap.Application.MarkTypeService.Types;
+using InteractiveMap.Application.Services.MapLayerService;
+using InteractiveMap.Application.Services.MarkService;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace InteractiveMap.Application;
@@ -12,10 +11,8 @@ public static class DependencyInjection
     {
         services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
-        services.AddScoped<IMapLayerService, MapLayerService.MapLayerService>();
-        services.AddScoped<IMarkService, MarkService.MarkService>();
-
-        services.AddScoped<IMarkTypeService, MarkTypeService.MarkTypeService>();
+        services.AddScoped<IMapLayerService, MapLayerService>();
+        services.AddScoped<IMarkService, MarkService>();
 
         services.AddScoped<IUserMapLayerService, UserMapLayerService>();
         services.AddScoped<IUserMarkService, UserMarkService>();

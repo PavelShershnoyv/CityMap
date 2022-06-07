@@ -1,6 +1,6 @@
 ﻿namespace InteractiveMap.Core.Entities;
 
-public class UserMark : Mark
+public class UserMark : BaseMark
 {
     public Guid UserId { get; set; }
 }

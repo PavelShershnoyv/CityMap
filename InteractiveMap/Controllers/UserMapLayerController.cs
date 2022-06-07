@@ -1,5 +1,5 @@
-﻿using InteractiveMap.Application.MapLayerService;
-using InteractiveMap.Application.MapLayerService.Types;
+﻿using InteractiveMap.Application.Services.MapLayerService;
+using InteractiveMap.Application.Services.MapLayerService.Types;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,7 +19,7 @@ public class UserMapLayerController : ApiControllerBase
     [HttpGet]
     public async Task<ActionResult<IEnumerable<MapLayerBaseDto>>> GetAll()
     {
-        var mapLayers = await _mapLayerService.GetLayersAsync(UserId);
+        var mapLayers = await _mapLayerService.GetAllAsync(UserId);
 
         return Ok(mapLayers);
     }
@@ -27,7 +27,7 @@ public class UserMapLayerController : ApiControllerBase
     [HttpGet("{id}")]
     public async Task<ActionResult<MapLayerDto>> GetById(int id)
     {
-        var mapLayer = await _mapLayerService.GetLayerAsync(UserId, id);
+        var mapLayer = await _mapLayerService.GetByIdAsync(id);
 
         return Ok(mapLayer);
     }
@@ -35,15 +35,15 @@ public class UserMapLayerController : ApiControllerBase
     [HttpPost]
     public async Task<ActionResult<int>> Create([FromBody] MapLayerRequest request)
     {
-        var id = await _mapLayerService.CreateLayerAsync(UserId, request);
+        var id = await _mapLayerService.CreateAsync(UserId, request);
 
         return Ok(id);
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> Update(int id, [FromBody] MapLayerRequest request)
+    public async Task<IActionResult> Update(int id, [FromBody] UpdateMapLayerRequest request)
     {
-        await _mapLayerService.UpdateLayerAsync(UserId, id, request);
+        await _mapLayerService.UpdateAsync(id, request);
 
         return NoContent();
     }
@@ -51,7 +51,7 @@ public class UserMapLayerController : ApiControllerBase
     [HttpDelete("{id}")]
     public async Task<IActionResult> Delete(int id)
     {
-        await _mapLayerService.DeleteLayerAsync(UserId, id);
+        await _mapLayerService.DeleteAsync(id);
 
         return NoContent();
     }

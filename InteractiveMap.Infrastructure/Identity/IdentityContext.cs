@@ -1,4 +1,4 @@
-﻿using InteractiveMap.Infrastructure.Identity.Seeds;
+﻿using InteractiveMap.Infrastructure.Identity.Defaults;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -52,6 +52,6 @@ public class IdentityContext : IdentityDbContext<ApplicationUser>
             entity.ToTable("UserTokens");
         });
 
-        DefaultRolesSeeder.Seed(builder);
+        builder.Entity<IdentityRole>().HasData(RoleDefaults.All);
     }
 }

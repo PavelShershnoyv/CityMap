@@ -16,7 +16,7 @@ public class AccountController : ApiControllerBase
 
     [HttpPost]
     [Route("register")]
-    public async Task<IActionResult> RegisterAsync([FromBody] RegisterRequest request)
+    public async Task<IActionResult> Register([FromBody] RegisterRequest request)
     {
         await _accountService.RegisterAsync(request);
 
@@ -25,9 +25,18 @@ public class AccountController : ApiControllerBase
 
     [HttpPost]
     [Route("login")]
-    public async Task<IActionResult> LoginAsync([FromBody] AuthenticationRequest request)
+    public async Task<IActionResult> Login([FromBody] AuthenticationRequest request)
     {
         await _accountService.LoginAsync(request);
+
+        return Ok();
+    }
+
+    [HttpPost]
+    [Route("logout")]
+    public async Task<IActionResult> Logout()
+    {
+        await _accountService.LogoutAsync();
 
         return Ok();
     }

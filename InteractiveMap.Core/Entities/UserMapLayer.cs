@@ -1,6 +1,6 @@
 ﻿namespace InteractiveMap.Core.Entities;
 
-public class UserMapLayer : MapLayer
+public class UserMapLayer : BaseMapLayer
 {
     public Guid UserId { get; set; }
 }

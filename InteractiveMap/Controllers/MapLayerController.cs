@@ -1,5 +1,6 @@
-﻿using InteractiveMap.Application.MapLayerService;
-using InteractiveMap.Application.MapLayerService.Types;
+﻿using InteractiveMap.Application.Services.MapLayerService;
+using InteractiveMap.Application.Services.MapLayerService.Types;
+using InteractiveMap.Core.Entities;
 using InteractiveMap.Infrastructure.Identity.Defaults;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -19,15 +20,15 @@ public class MapLayerController : ApiControllerBase
     [HttpGet]
     public async Task<ActionResult<IEnumerable<MapLayerBaseDto>>> GetAll()
     {
-        var mapLayers = await _mapLayerService.GetLayersAsync();
+        var mapLayers = await _mapLayerService.GetAllAsync();
 
         return Ok(mapLayers);
     }
 
-    [HttpGet]
-    public async Task<ActionResult<MapLayerDto>> GetByTitle([FromQuery] string title)
+    [HttpGet("{id}")]
+    public async Task<ActionResult<MapLayerDto>> GetById(int id)
     {
-        var mapLayer = await _mapLayerService.GetLayerAsync(title);
+        var mapLayer = await _mapLayerService.GetByIdAsync(id);
 
         return Ok(mapLayer);
     }
@@ -36,25 +37,25 @@ public class MapLayerController : ApiControllerBase
     [Authorize(Roles = RoleDefaults.Admin)]
     public async Task<ActionResult<string>> Create([FromBody] MapLayerRequest request)
     {
-        var title = await _mapLayerService.CreateLayerAsync(request);
+        var title = await _mapLayerService.CreateAsync(request);
 
         return Ok(title);
     }
 
     [HttpPut("{id}")]
-    [Authorize(Roles = "Admin")]
-    public async Task<IActionResult> Update(int id, [FromBody] MapLayerRequest request)
+    [Authorize(Roles = RoleDefaults.Admin)]
+    public async Task<IActionResult> Update(int id, [FromBody] UpdateMapLayerRequest request)
     {
-        await _mapLayerService.UpdateLayerAsync(id, request);
+        await _mapLayerService.UpdateAsync(id, request);
 
         return NoContent();
     }
 
     [HttpDelete("{id}")]
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = RoleDefaults.Admin)]
     public async Task<IActionResult> Delete(int id)
     {
-        await _mapLayerService.DeleteLayerAsync(id);
+        await _mapLayerService.DeleteAsync(id);
 
         return NoContent();
     }

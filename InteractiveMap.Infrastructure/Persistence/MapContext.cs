@@ -1,21 +1,20 @@
 ﻿using System.Reflection;
-using InteractiveMap.Application.Common.Interfaces;
 using InteractiveMap.Core.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace InteractiveMap.Infrastructure.Persistence;
 
-public class MapContext : DbContext, IMapContext
+public class MapContext : DbContext
 {
-    public DbSet<MarkType> MarkTypes => Set<MarkType>();
+    public DbSet<Mark> Marks { get; set; }
 
-    public DbSet<UserMark> UserMarks => Set<UserMark>();
+    public DbSet<UserMark> UserMarks { get; set; }
 
-    public DbSet<Mark> PublicMarks => Set<Mark>();
+    public DbSet<MarkImage> MarkImages { get; set; }
 
-    public DbSet<MapLayer> PublicMapLayers => Set<MapLayer>();
+    public DbSet<MapLayer> MapLayers { get; set; }
 
-    public DbSet<UserMapLayer> UserMapLayers => Set<UserMapLayer>();
+    public DbSet<UserMapLayer> UserMapLayers { get; set; }
 
     public MapContext() : base() { }
 

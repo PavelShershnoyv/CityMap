@@ -2,9 +2,6 @@
 
 namespace InteractiveMap.Core.Entities;
 
-public class MapLayer : BaseEntity
+public class MapLayer : BaseMapLayer
 {
-    public string Title { get; set; }
-    public string Description { get; set; }
-    public ICollection<Mark> Marks { get; set; }
 }
