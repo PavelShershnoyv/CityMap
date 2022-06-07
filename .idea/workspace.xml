@@ -5,21 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5775d08c-06f2-4a51-9b04-40d3b3f1bed1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/InteractiveMap/Client/src/components/drawerWrapper/DrawerWrapper.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/InteractiveMap/Client/src/hooks/redux.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/InteractiveMap/Client/src/sevices/PlacemarkService.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/InteractiveMap/Client/src/store/placemarks.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/InteractiveMap/Client/src/store/store.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/InteractiveMap/Client/src/types/PlacemarkTypes.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/InteractiveMap/Client/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/InteractiveMap/Client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/src/components/ModalFills/DefaultPlacemark.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/InteractiveMap/Client/src/components/modalFills/DefaultPlacemark.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/src/components/ModalFills/DefaultPlacemark.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/InteractiveMap/Client/src/components/modalFills/DefaultPlacemark.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/src/components/header/header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/InteractiveMap/Client/src/components/header/header.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/src/components/maps/mainMap.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/InteractiveMap/Client/src/components/maps/mainMap.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/src/components/maps/pastMap.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/InteractiveMap/Client/src/components/maps/pastMap.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/src/store/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/src/sevices/PlacemarkService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/InteractiveMap/Client/src/sevices/PlacemarkService.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,6 +95,9 @@
       <workItem from="1654598694267" duration="3872000" />
       <workItem from="1654602659984" duration="861000" />
       <workItem from="1654604855786" duration="3377000" />
+      <workItem from="1654609949729" duration="1036000" />
+      <workItem from="1654611074157" duration="926000" />
+      <workItem from="1654612057340" duration="2208000" />
     </task>
     <servers />
   </component>

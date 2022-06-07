@@ -4,15 +4,17 @@ import {MapEvent} from 'yandex-maps';
 import styles from './map.module.css';
 import {Modal} from '../modal/modal';
 import {DefaultPlacemark} from '../modalFills/DefaultPlacemark';
-import {Drawer} from 'antd';
-import 'antd/dist/antd.css';
 import {IPlacemark} from '../../types/PlacemarkTypes';
+import { useGetPlacemarksQuery } from '../../sevices/PlacemarkService';
+import { DrawerWrapper } from '../drawerWrapper/DrawerWrapper';
 
 export const MainMap: React.FC<any> = ({children}) => {
     const [placemarks, setPlacemarks] = useState<IPlacemark[]>([]);
     const [isModalActive, setIsModalActive] = useState(false);
-    const [lastCoords, setLastCoords] = useState([0, 0]);
     const [visible, setVisible] = useState(false);
+
+    const {data} = useGetPlacemarksQuery(1);
+    console.log(data);
 
     const showDrawer = () => {
         setVisible(true);
@@ -27,9 +29,12 @@ export const MainMap: React.FC<any> = ({children}) => {
         const newPlacemarks = [...placemarks];
 
         newPlacemarks.push({
-            coords: updatedCoords,
+            coords: {
+                latitude: updatedCoords[0],
+                longitude: updatedCoords[1]
+            },
             name: '',
-            type: '',
+            type: 0,
             id: (updatedCoords[0] + updatedCoords[1])
         });
         setPlacemarks(newPlacemarks);
@@ -48,7 +53,7 @@ export const MainMap: React.FC<any> = ({children}) => {
                      onClick={MapHandler}>
                     {placemarks.map(pl =>
                         <Placemark
-                            geometry={pl.coords}
+                            geometry={[pl.coords.latitude, pl.coords.longitude]}
                             properties={{iconCaption: 'Текст'}}
                             key={pl.id}
                             options={{iconColor: 'red', preset: 'islands#Icon', openEmptyHint: true}}
@@ -56,25 +61,10 @@ export const MainMap: React.FC<any> = ({children}) => {
                                 setIsModalActive(true);
                             }}/>
                     )}
-                    <Button onClick={() => setVisible(true)}>Виды мест</Button>
+                    <Button onClick={showDrawer} data={{content: 'Фильтры'}}></Button>
                 </Map>
             </YMaps>
-            <Drawer
-                title="Выберите типы учреждений"
-                placement="left"
-                closable={false}
-                onClose={onClose}
-                visible={visible}
-                getContainer={false}
-                style={{position: 'absolute'}}>
-                <div>Администрация</div>
-                <div>Образование</div>
-                <div>Медицина</div>
-                <div>Безопасность</div>
-                <div>Культура и отдых</div>
-                <div>Спорт</div>
-                <div>Другое</div>
-            </Drawer>
+            <DrawerWrapper visible={visible} onClose={onClose}/>
             <Modal active={isModalActive} setActive={setIsModalActive}>
                 <DefaultPlacemark/>
             </Modal>

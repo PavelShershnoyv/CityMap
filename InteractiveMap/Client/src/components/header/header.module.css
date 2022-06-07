@@ -22,6 +22,7 @@
 
 .navElem:hover {
     cursor: pointer;
+    color: white;
 }
 
 .headerBtn {
@@ -39,5 +40,5 @@
 
 .icon {
     font-size: 40px;
-    color: rgb(4, 12, 136);
+    color: rgb(138, 14, 14);
 }

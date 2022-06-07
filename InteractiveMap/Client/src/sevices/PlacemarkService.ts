@@ -1,6 +1,10 @@
-import { createApi, fetchBaseQuery, BaseQueryFn } from '@reduxjs/toolkit/query/react';
-import { IPlacemark } from '../types/PlacemarkTypes';
+import { createApi, BaseQueryFn } from '@reduxjs/toolkit/query/react';
+import { IPlacemark, ILayer, IFullPlacemark } from '../types/PlacemarkTypes';
 import axios, { AxiosError, AxiosRequestConfig } from 'axios';
+
+interface IMarkRequest extends IFullPlacemark {
+    layerId: number;
+}
 
 export const instance = axios.create({
     headers: {
@@ -30,15 +34,33 @@ export const axiosBaseQuery = ({ baseUrl }: { baseUrl: string } = { baseUrl: '' 
 
 export const placemarkApi = createApi({
     reducerPath: 'placemarkApi',
-    baseQuery: axiosBaseQuery(),
+    baseQuery: axiosBaseQuery({baseUrl: 'http://localhost:4683/api/'}),
     endpoints: (build) => ({
-        getPlacemarks: build.query<IPlacemark[], string>({
-            query: (type) => ({
-                url: `/${type}`,
+        getLayer: build.query<ILayer[], void>({ 
+            query: () => ({ 
+                url: 'layers',
                 method: 'GET'
+            })
+        }),
+        getPlacemarks: build.query<IPlacemark[], number>({
+            query: (id) => ({
+                url: `marks`,
+                method: 'GET',
+                params: {
+                    layerId: id
+                }
+            })
+        }),
+        createPlacemark: build.mutation<number, IMarkRequest>({
+            query: (body) => ({
+                url: 'marks',
+                method: 'POST',
+                body
             })
         })
     })
 });
+
+export const { useGetPlacemarksQuery, useGetLayerQuery, useCreatePlacemarkMutation } = placemarkApi;
 
 

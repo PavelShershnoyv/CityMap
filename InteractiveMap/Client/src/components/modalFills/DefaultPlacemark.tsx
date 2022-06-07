@@ -1,18 +1,40 @@
 import React from 'react';
 import styles from './DefaultPlacemark.module.css';
-
+import { Button, Form, Input } from "antd";
+import TextArea from 'antd/lib/input/TextArea';
 
 export const DefaultPlacemark: React.FC = () => {
-    return (
-            <div className={styles.container} style={{alignItems: 'flex-start', gap: 10}}>
-                <div>Описание</div>
-                <textarea placeholder="Задайте описание метки" style={{height: 100, width: "100%", resize: 'none'}}>
+    const [form] = Form.useForm();
 
-                </textarea>
-                <div className={styles.options}>
-                    <button>Изменить</button>
-                    <button>Удалить</button>
-                </div>
-            </div>
+    const onReset = () => {
+        form.resetFields();
+      };
+    
+    return (
+        <Form
+            form={form}
+            labelCol={{ span: 6}}
+            wrapperCol={{ span: 20}}
+            autoComplete="off"
+        >
+            <Form.Item
+                label="Имя метки"
+                name="name"
+                rules={[{ required: true, message: 'Поле обязательно к заполнению' }]}
+                className={styles.name}
+            >
+                <Input placeholder="Введите имя метки"/>
+            </Form.Item>
+            <Form.Item
+                label="Описание метки"
+                name="description"
+                className={styles.area}
+                >
+                <TextArea placeholder="Введите описание метки"/>
+            </Form.Item>
+            <Button type="primary" htmlType="submit">
+                Сохранить
+            </Button>
+        </Form>
     );
 };

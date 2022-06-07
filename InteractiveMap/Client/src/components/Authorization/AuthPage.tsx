@@ -1,14 +1,13 @@
 import { Link, Outlet, Route, Routes } from "react-router-dom";
-import classes from "./Authorization.module.css";
+import classes from "./AuthPage.module.css";
 
-export const Authorization = () => {
+export const AuthPage = () => {
   return (
     <div className={classes.wrapperPage}>
       <div className={classes.wrapperForm}>
-        <form className={classes.form}>
           <div className={classes.title}>
             <div className={classes.enter}>
-              <Link to="authorization" className={classes.enterText}>
+              <Link to="login" className={classes.enterText}>
                 Войти
               </Link>
             </div>
@@ -18,8 +17,9 @@ export const Authorization = () => {
               </Link>
             </div>
           </div>
+          <div className={classes.form}>
           <Outlet />
-        </form>
+          </div>
       </div>
     </div>
   );

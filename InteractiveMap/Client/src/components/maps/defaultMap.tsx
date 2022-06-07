@@ -2,12 +2,11 @@ import React, { useState } from 'react';
 import { YMaps, Map, Placemark } from 'react-yandex-maps';
 import styles from './map.module.css';
 import { Modal } from '../modal/modal';
-import { useGetPlacemarksQuery } from '../../sevices/PlacemarkService';
 
-export const PastMap = () => {
+export const DefaultMap: React.FC = () => {
+
     return (
         <>
         </>
-
     )
-} 
+}

@@ -1,31 +1,26 @@
 .wrapperPage {
+  width: 100vw;
+  height: 100vh;
   display: flex;
   justify-content: center;
-  text-align: center;
+  align-items: center;
 }
 
 .wrapperForm {
-  margin-top: auto;
-  height: 250px;
-  width: 400px;
-  margin-top: -125px;
-  border: 1px solid #333333;
-  border-radius: 10px;
-  position: absolute;
-  top: 50%;
   font-size: 20px;
   font-weight: bold;
 }
 
 .form {
   color: #1E90FF;
+  padding: 8px;
 }
 
 .title {
   border-bottom: 1px solid #333333;
   padding: 8px 0px;
+  margin-bottom: 8px;
   display: flex;
-
 }
 
 .enter {
