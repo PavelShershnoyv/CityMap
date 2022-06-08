@@ -1,5 +1,5 @@
-﻿using InteractiveMap.Application.Common.Interfaces;
-using InteractiveMap.Infrastructure.Identity.Types;
+﻿using InteractiveMap.Infrastructure.Identity.Services.AccountService;
+using InteractiveMap.Infrastructure.Identity.Services.AccountService.Types;
 using Microsoft.AspNetCore.Mvc;
 
 namespace InteractiveMap.Web.Controllers;

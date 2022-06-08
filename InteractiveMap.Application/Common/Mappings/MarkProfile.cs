@@ -10,17 +10,13 @@ public class MarkProfile : Profile
     public MarkProfile()
     {
         CreateMap<MarkRequest, Mark>();
-        CreateMap<UpdateMarkRequest, Mark>();
 
         CreateMap<MarkRequest, UserMark>();
-        CreateMap<UpdateMarkRequest, UserMark>();
 
         CreateMap<Mark, MarkBaseDto>();
         CreateMap<Mark, MarkDto>();
 
         CreateMap<UserMark, MarkBaseDto>();
         CreateMap<UserMark, MarkDto>();
-
-        CreateMap<MarkImage, ImageDto>();
     }
 }

@@ -16,4 +16,8 @@
     <ProjectReference Include="..\InteractiveMap.Core\InteractiveMap.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Common\Mappings\" />
+  </ItemGroup>
+
 </Project>

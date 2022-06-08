@@ -1,7 +1,5 @@
 using InteractiveMap.Application;
 using InteractiveMap.Infrastructure;
-using InteractiveMap.Infrastructure.Identity;
-using InteractiveMap.Infrastructure.Persistence;
 using InteractiveMap.Web;
 using InteractiveMap.Web.Middlewares.ExceptionHandlerMiddleware;
 

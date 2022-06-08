@@ -1,28 +1,29 @@
 ﻿using InteractiveMap.Application.Common.Types;
-using InteractiveMap.Application.MarkImageService.Types;
 using InteractiveMap.Application.Services.MarkService;
 using InteractiveMap.Application.Services.MarkService.Types;
+using InteractiveMap.Core.Entities;
+using InteractiveMap.Core.Enums;
+using InteractiveMap.Infrastructure.Identity.Defaults;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace InteractiveMap.Web.Controllers;
 
 [Route("api/marks")]
-[Authorize]
 public class MarkController : ApiControllerBase
 {
-    private readonly IMarkService _markService;
+    private readonly IBaseMarkService<Mark> _markService;
 
-    public MarkController(IMarkService markService)
+    public MarkController(IBaseMarkService<Mark> markService)
     {
         _markService = markService ?? throw new ArgumentNullException(nameof(markService));
     }
 
     [HttpGet]
     [AllowAnonymous]
-    public async Task<ActionResult<IEnumerable<MarkBaseDto>>> GetAll([FromQuery] int layerId)
+    public async Task<ActionResult<IEnumerable<MarkBaseDto>>> GetAll([FromQuery] LayerType layerType)
     {
-        var marks = await _markService.GetAllAsync(layerId);
+        var marks = await _markService.GetAllAsync(layerType);
 
         return Ok(marks);
     }
@@ -37,6 +38,7 @@ public class MarkController : ApiControllerBase
     }
 
     [HttpPost]
+    [Authorize(Roles = RoleDefaults.Admin)]
     public async Task<ActionResult<int>> Create(MarkRequest request)
     {
         var id = await _markService.CreateAsync(request);
@@ -45,30 +47,16 @@ public class MarkController : ApiControllerBase
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> Update(int id, UpdateMarkRequest request)
+    [Authorize(Roles = RoleDefaults.Admin)]
+    public async Task<IActionResult> Update(int id, MarkRequest request)
     {
         await _markService.UpdateAsync(id, request);
 
         return NoContent();
     }
 
-    [HttpPost("{id}/images")]
-    public async Task<ActionResult<string>> AddImage(int id, [FromForm] ImageRequest request)
-    {
-        var imageUrl = await _markService.AddImageAsync(id, request);
-
-        return Ok(imageUrl);
-    }
-
-    [HttpDelete("{id}/images/{imageId}")]
-    public async Task<IActionResult> DeleteImage(int id, int imageId)
-    {
-        await _markService.DeleteImageAsync(id, imageId);
-
-        return NoContent();
-    }
-
     [HttpDelete("{id}")]
+    [Authorize(Roles = RoleDefaults.Admin)]
     public async Task<IActionResult> Delete(int id)
     {
         await _markService.DeleteAsync(id);

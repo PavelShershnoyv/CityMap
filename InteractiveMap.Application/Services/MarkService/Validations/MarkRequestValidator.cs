@@ -13,6 +13,6 @@ public class MarkRequestValidator : AbstractValidator<MarkRequest>
 
         RuleFor(request => request.Position).SetValidator(new PositionValidator());
 
-        RuleFor(request => request.MapLayerId).NotNull();
+        RuleFor(request => request.LayerType).NotEmpty();
     }
 }

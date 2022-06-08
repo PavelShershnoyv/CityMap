@@ -40,6 +40,10 @@ namespace InteractiveMap.Web.Middlewares.ExceptionHandlerMiddleware
                     code = (int)HttpStatusCode.NotFound;
                     await response.WriteAsJsonAsync(notFoundException.Message);
                     break;
+                case ForbiddenException forbiddenException:
+                    code = (int)HttpStatusCode.Forbidden;
+                    await response.WriteAsJsonAsync(forbiddenException.Message);
+                    break;
                 default:
                     code = (int)HttpStatusCode.InternalServerError;
                     await response.WriteAsJsonAsync(exception.Message);

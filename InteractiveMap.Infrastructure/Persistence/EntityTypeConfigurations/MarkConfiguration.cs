@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace InteractiveMap.Infrastructure.Persistence.EntityTypeConfigurations;
 
-public class MarkConfiguration : IEntityTypeConfiguration<Mark>
+public class BaseMarkConfiguration : IEntityTypeConfiguration<Mark>
 {
     public void Configure(EntityTypeBuilder<Mark> builder)
     {
