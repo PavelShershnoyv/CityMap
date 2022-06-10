@@ -2,8 +2,9 @@ import { createApi, BaseQueryFn } from '@reduxjs/toolkit/query/react';
 import { IPlacemark, ILayer, IFullPlacemark } from '../types/PlacemarkTypes';
 import axios, { AxiosError, AxiosRequestConfig } from 'axios';
 
-interface IMarkRequest extends IFullPlacemark {
-    layerId: number;
+
+export interface IMarkRequest extends IFullPlacemark {
+    layerType: number;
 }
 
 export const instance = axios.create({
@@ -36,18 +37,12 @@ export const placemarkApi = createApi({
     reducerPath: 'placemarkApi',
     baseQuery: axiosBaseQuery({baseUrl: 'http://localhost:4683/api/'}),
     endpoints: (build) => ({
-        getLayer: build.query<ILayer[], void>({ 
-            query: () => ({ 
-                url: 'layers',
-                method: 'GET'
-            })
-        }),
         getPlacemarks: build.query<IPlacemark[], number>({
             query: (id) => ({
                 url: `marks`,
                 method: 'GET',
                 params: {
-                    layerId: id
+                    layerType: id
                 }
             })
         }),
@@ -55,12 +50,12 @@ export const placemarkApi = createApi({
             query: (body) => ({
                 url: 'marks',
                 method: 'POST',
-                body
+                data: body
             })
         })
     })
 });
 
-export const { useGetPlacemarksQuery, useGetLayerQuery, useCreatePlacemarkMutation } = placemarkApi;
+export const { useGetPlacemarksQuery, useCreatePlacemarkMutation } = placemarkApi;
 
 

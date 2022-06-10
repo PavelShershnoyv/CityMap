@@ -61,13 +61,13 @@ public abstract class BaseMarkService<TMark> : IBaseMarkService<TMark>
             throw new NotFoundException(nameof(TMark), id);
         }
 
-        var userId = _currentUserService.UserId;
-        var canUserWrite = await _userScopeService.CanUserReadAsync(userId, entity);
+        // var userId = _currentUserService.UserId;
+        // var canUserWrite = await _userScopeService.CanUserReadAsync(userId, entity);
 
-        if (!canUserWrite)
-        {
-            throw new ForbiddenException(userId.ToString(), nameof(TMark), id);
-        }
+        // if (!canUserWrite)
+        // {
+        //     throw new ForbiddenException(userId.ToString(), nameof(TMark), id);
+        // }
 
         return _mapper.Map<MarkDto>(entity);
     }
@@ -76,13 +76,18 @@ public abstract class BaseMarkService<TMark> : IBaseMarkService<TMark>
     {
         var entity = await _context.Set<TMark>().FindAsync(new object[] { id }, cancellationToken);
 
-        var userId = _currentUserService.UserId;
+        if (entity == null)
+        {
+            throw new NotFoundException(nameof(TMark), id);
+        }
+
+        /*var userId = _currentUserService.UserId;
         var canUserWrite = await _userScopeService.CanUserWriteAsync(userId, entity);
 
         if (!canUserWrite)
         {
             throw new ForbiddenException(userId.ToString(), nameof(TMark), id);
-        }
+        }*/
 
         entity.LayerType = request.LayerType;
         entity.Type = request.Type;
@@ -104,13 +109,13 @@ public abstract class BaseMarkService<TMark> : IBaseMarkService<TMark>
             throw new NotFoundException(nameof(TMark), id);
         }
 
-        var userId = _currentUserService.UserId;
+        /*var userId = _currentUserService.UserId;
         var canUserWrite = await _userScopeService.CanUserWriteAsync(userId, entity);
 
         if (!canUserWrite)
         {
             throw new ForbiddenException(userId.ToString(), nameof(TMark), id);
-        }
+        }*/
 
         marks.Remove(entity);
         await _context.SaveChangesAsync(cancellationToken);

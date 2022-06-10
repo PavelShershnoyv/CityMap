@@ -38,7 +38,7 @@ public class MarkController : ApiControllerBase
     }
 
     [HttpPost]
-    [Authorize(Roles = RoleDefaults.Admin)]
+    //[Authorize(Roles = RoleDefaults.Admin)]
     public async Task<ActionResult<int>> Create(MarkRequest request)
     {
         var id = await _markService.CreateAsync(request);
@@ -47,7 +47,7 @@ public class MarkController : ApiControllerBase
     }
 
     [HttpPut("{id}")]
-    [Authorize(Roles = RoleDefaults.Admin)]
+    //[Authorize(Roles = RoleDefaults.Admin)]
     public async Task<IActionResult> Update(int id, MarkRequest request)
     {
         await _markService.UpdateAsync(id, request);
@@ -56,7 +56,7 @@ public class MarkController : ApiControllerBase
     }
 
     [HttpDelete("{id}")]
-    [Authorize(Roles = RoleDefaults.Admin)]
+    //[Authorize(Roles = RoleDefaults.Admin)]
     public async Task<IActionResult> Delete(int id)
     {
         await _markService.DeleteAsync(id);

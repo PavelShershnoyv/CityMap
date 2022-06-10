@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { Layout } from "./components/layout/layout";
 import { DefaultMap } from "./components/maps/defaultMap";
 import { PastMap } from "./components/maps/pastMap";
@@ -18,7 +18,8 @@ function App() {
           <Route path="future" element={<FutureMap />} />
         </Route>
         <Route path="/account" element={<AuthPage />}>
-          <Route path="login" element={<Login />} />
+          <Route index element={<Navigate to="login" />}/>
+          <Route path='login' element={<Login />} />
           <Route path="registration" element={<Registration />} />
         </Route>
       </Routes>

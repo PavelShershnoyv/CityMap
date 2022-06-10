@@ -29,7 +29,7 @@ export const Header: React.FC = () => {
                 <NavLink to="/myMap" className={styles.navElem}>Моя карта</NavLink>
             </div>
             <button className={styles.headerBtn}>
-                <NavLink to="/account/authorization">
+                <NavLink to="/account/login">
                     <UserOutlined className={styles.icon} />
                 </NavLink>
             </button>

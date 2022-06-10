@@ -1,7 +1,8 @@
+
 export interface IPlacemark {
     id: number;
-    name: string;
-    coords: {
+    title: string;
+    position: {
         latitude: number;
         longitude: number;
     };

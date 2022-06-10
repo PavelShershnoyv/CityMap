@@ -1,57 +1,66 @@
 import {Button, Checkbox, Form, Input} from "antd";
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useLazyRegisterQuery } from "../../../sevices/AuthService";
+import { IRegisterRequest } from "../../../types/AuthTypes";
 import classes from "./Registration.module.css";
 
 const Registration = () => {
-  const [form] = Form.useForm();
+  const [register] = useLazyRegisterQuery();
+  const navigate = useNavigate();
+
+  const handleFinish = async (values: any) => {
+    const request: IRegisterRequest = {
+      username: values.username,
+      email: values.email,
+      password: values.password,
+      confirmPassword: values.confirmPassword,
+    };
+
+    try {
+      await register(request);
+    } catch {
+      navigate('/');
+    }
+  }
 
   return (
     <Form
-      form={form}
       name="register"
-      wrapperCol={{ span: 16 }}
-      initialValues={{ remember: true }}
       autoComplete="off"
+      onFinish={handleFinish}
     >
       <Form.Item
-        label="Username"
         name="username"
         rules={[{ required: true, message: 'Пожалуйста, введите username!' }]}
       >
-        <Input />
+        <Input placeholder='Username' autoComplete='off'/>
       </Form.Item>
 
       <Form.Item
-        label="Email"
         name="email"
         rules={[{ required: true, message: 'Пожалуйста, введите email!' }]}
       >
-        <Input />
+        <Input placeholder='Email' autoComplete='off'/>
       </Form.Item>
 
       <Form.Item
-        label="Пароль"
         name="password"
         rules={[{ required: true, message: 'Пожалуйста, введите пароль!' }]}
       >
-        <Input.Password />
+        <Input.Password placeholder='Пароль' autoComplete='off' />
       </Form.Item>
 
       <Form.Item
-        label="Подтвердите пароль"
         name="confirm-password"
         rules={[{ required: true, message: 'Пожалуйста, введите пароль!' }]}
       >
-        <Input.Password />
-      </Form.Item>
-
-      <Form.Item name="remember" valuePropName="checked" wrapperCol={{ offset: 8, span: 16 }}>
-        <Checkbox>Remember me</Checkbox>
+        <Input.Password placeholder="Подтвердите пароль" autoComplete='off'/>
       </Form.Item>
 
       <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
         <Button type="primary" htmlType="submit">
-          Submit
+          Зарегистрироваться
         </Button>
       </Form.Item>
     </Form>

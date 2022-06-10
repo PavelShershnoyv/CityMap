@@ -6,9 +6,30 @@
   <component name="ChangeListManager">
     <list default="true" id="5775d08c-06f2-4a51-9b04-40d3b3f1bed1" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InteractiveMap.Application/Services/MarkService/BaseMarkService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InteractiveMap.Application/Services/MarkService/BaseMarkService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/InteractiveMap/Client/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/InteractiveMap/Client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/InteractiveMap/Client/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/src/components/Authorization/AuthPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/InteractiveMap/Client/src/components/Authorization/AuthPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/src/components/Authorization/Login/Login.module.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/src/components/Authorization/Login/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/InteractiveMap/Client/src/components/Authorization/Login/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/src/components/Authorization/Registration/Registration.module.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/src/components/Authorization/Registration/Registration.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/src/components/Authorization/Registration/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/InteractiveMap/Client/src/components/Authorization/Registration/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/src/components/header/header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/InteractiveMap/Client/src/components/header/header.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/src/components/maps/mainMap.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/InteractiveMap/Client/src/components/maps/mainMap.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/src/components/maps/pastMap.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/InteractiveMap/Client/src/components/maps/pastMap.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/src/components/modal/modal.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/src/components/modalFills/DefaultPlacemark.module.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/src/components/modalFills/DefaultPlacemark.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/src/hooks/redux.ts" beforeDir="false" afterPath="$PROJECT_DIR$/InteractiveMap/Client/src/hooks/redux.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/src/sevices/PlacemarkService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/InteractiveMap/Client/src/sevices/PlacemarkService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/src/store/placemarks.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/src/store/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/InteractiveMap/Client/src/store/store.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InteractiveMap/Client/src/types/PlacemarkTypes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/InteractiveMap/Client/src/types/PlacemarkTypes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InteractiveMap/Controllers/MarkController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InteractiveMap/Controllers/MarkController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InteractiveMap/Map.db" beforeDir="false" afterPath="$PROJECT_DIR$/InteractiveMap/Map.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InteractiveMap/Map.db-shm" beforeDir="false" afterPath="$PROJECT_DIR$/InteractiveMap/Map.db-shm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InteractiveMap/Map.db-wal" beforeDir="false" afterPath="$PROJECT_DIR$/InteractiveMap/Map.db-wal" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,6 +119,8 @@
       <workItem from="1654609949729" duration="1036000" />
       <workItem from="1654611074157" duration="926000" />
       <workItem from="1654612057340" duration="2208000" />
+      <workItem from="1654669832446" duration="7889000" />
+      <workItem from="1654795278866" duration="113000" />
     </task>
     <servers />
   </component>
