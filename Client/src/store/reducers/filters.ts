@@ -17,7 +17,16 @@ interface IFilterState {
 }
 
 const initialState: IFilterState = {
-    filters: []
+    filters: [
+        Filters.Administration,
+        Filters.Culture,
+        Filters.Education,
+        Filters.Medicine,
+        Filters.Security,
+        Filters.Other,
+        Filters.Production,
+        Filters.Sport
+    ]
 }
 
 export const filterSlice = createSlice({

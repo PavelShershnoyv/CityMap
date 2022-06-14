@@ -1,9 +1,14 @@
 import { createApi, BaseQueryFn } from '@reduxjs/toolkit/query/react';
-import { IPlacemark, IProposalPlacemark, ITypedPlacemark, IUnionRequestsType } from '../types/PlacemarkTypes';
+import { IPlacemark, IProposalPlacemark, ITypedPlacemark, IUnionRequestsType, IEventPlacemark } from '../types/PlacemarkTypes';
 import axios, { AxiosError, AxiosRequestConfig } from 'axios';
 
 export interface ICreateRequest {
     body: IUnionRequestsType;
+    layer: string;
+}
+
+export interface ICurrentPlacemarkInfo {
+    id: number;
     layer: string;
 }
 
@@ -36,10 +41,39 @@ export const axiosBaseQuery = ({ baseUrl }: { baseUrl: string } = { baseUrl: '' 
 export const placemarkApi = createApi({
     reducerPath: 'placemarkApi',
     baseQuery: axiosBaseQuery({ baseUrl: 'http://localhost:4683/api/' }),
+    tagTypes: ['Placemark'],
     endpoints: (build) => ({
-        getPlacemarks: build.query<IPlacemark[] | IProposalPlacemark[] | ITypedPlacemark[], string>({
+        getDefaultPlacemarks: build.query<ITypedPlacemark[], string>({
             query: (type) => ({
                 url: `${type}-marks`,
+                method: 'GET'
+            }),
+            providesTags: result => ['Placemark']
+        }),
+        getProposalPlacemarks: build.query<IProposalPlacemark[], void>({
+            query: () => ({
+                url: 'proposals-marks',
+                method: 'GET'
+            }),
+            providesTags: result => ['Placemark']
+        }),
+        getEvents: build.query<IEventPlacemark[], void>({
+            query: () => ({
+                url: 'events-marks',
+                method: 'GET'
+            }),
+            providesTags: result => ['Placemark']
+        }),
+        getUserPlacemarks: build.query<IPlacemark[], void>({
+            query: () => ({
+                url: 'user-marks',
+                method: 'GET'
+            }),
+            providesTags: result => ['Placemark']
+        }),
+        getCurrentPlacemark: build.query<IPlacemark, ICurrentPlacemarkInfo>({
+            query: (info) => ({
+                url: `${info.layer}-marks/${info.id}`,
                 method: 'GET'
             })
         }),
@@ -49,18 +83,28 @@ export const placemarkApi = createApi({
                 Object.keys(req.body).forEach((key) => {
                     //@ts-ignore
                     bodyFormData.append(key, req.body[key]);
-                })
-                
+                });
+
+                bodyFormData.append('position.latitude', req.body.position.latitude.toString());
+                bodyFormData.append('position.longitude', req.body.position.longitude.toString());
                 return {
                     url: `${req.layer}-marks`,
                     method: 'POST',
                     data: bodyFormData
                 }
-            }
+            },
+            invalidatesTags: ['Placemark']
         })
     })
 });
 
-export const { useGetPlacemarksQuery, useCreatePlacemarkMutation } = placemarkApi;
+export const {
+    useGetCurrentPlacemarkQuery,
+    useGetDefaultPlacemarksQuery,
+    useGetProposalPlacemarksQuery,
+    useGetEventsQuery,
+    useGetUserPlacemarksQuery,
+    useCreatePlacemarkMutation
+} = placemarkApi;
 
 

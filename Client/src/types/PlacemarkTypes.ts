@@ -5,6 +5,8 @@ export interface IPlacemark {
         longitude: number;
     };
     address: string;
+    id?: number;
+    description?: string;
 }
 
 export interface ITypedPlacemark extends IPlacemark {
@@ -24,15 +26,6 @@ export interface IBasePlacemarkRequest extends IPlacemark {
     description: string;
 }
 
-export interface ITypedPlacemarkRequest extends IBasePlacemarkRequest {
-    type: string;
-}
-
-export interface IEventPlacemarkRequest extends IBasePlacemarkRequest {
-    startTime: string;
-    endTime: string;
-}
-
 export interface IUnionRequestsType extends IBasePlacemarkRequest {
     type?: string;
     startTime?: string;
@@ -46,7 +39,7 @@ export const colors: { [index: string]: string } = {
     production: 'orange',
     sport: 'yellow',
     security: 'blue',
-    medicine: 'light-blue',
+    medicine: 'aqua',
     culture: 'green'
 }
 

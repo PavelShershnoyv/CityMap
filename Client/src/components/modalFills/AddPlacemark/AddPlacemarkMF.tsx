@@ -2,9 +2,9 @@ import React from 'react';
 import styles from './AddPlacemarkMF.module.css';
 import { Button, Form, Input } from "antd";
 import TextArea from 'antd/lib/input/TextArea';
-import { useCreatePlacemarkMutation } from '../../sevices/PlacemarkService';
-import { ICreateRequest } from '../../sevices/PlacemarkService';
-import { IBasePlacemarkRequest, ITypedPlacemarkRequest, IUnionRequestsType} from '../../types/PlacemarkTypes';
+import { useCreatePlacemarkMutation } from '../../../sevices/PlacemarkService';
+import { ICreateRequest } from '../../../sevices/PlacemarkService';
+import { IUnionRequestsType} from '../../../types/PlacemarkTypes';
 import { useParams } from 'react-router-dom';
 
 interface IAddPlacemarkProps {

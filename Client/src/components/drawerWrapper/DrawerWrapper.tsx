@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Drawer, Checkbox} from 'antd';
+import {Drawer, Checkbox, Divider} from 'antd';
 import 'antd/dist/antd.css';
 import styles from './DrawerWrapper.module.css';
 import {CheckboxValueType} from "antd/es/checkbox/Group";
@@ -17,6 +17,16 @@ export const DrawerWrapper: React.FC<IDrawerWrapperProps> = ({visible, onClose})
         const filters: Filters[] = values as unknown as Filters[];
         setFilters(filters);
     }
+    const defaultValue = [
+        'administration',
+        'education',
+        'medicine',
+        'production',
+        'security',
+        'culture',
+        'sport',
+        'other'
+    ];
     return (
         <Drawer
             title="Выберите типы учреждений"
@@ -27,7 +37,7 @@ export const DrawerWrapper: React.FC<IDrawerWrapperProps> = ({visible, onClose})
             onClose={onClose}
             getContainer={false}
             style={{position: 'absolute'}}>
-            <Checkbox.Group className={styles.container} onChange={onChange}>
+            <Checkbox.Group className={styles.container} onChange={onChange} defaultValue={defaultValue}>
                 <Checkbox className={styles.item} style={{marginLeft: '8px'}}
                           value={'administration'}>Администрация</Checkbox>
                 <Checkbox className={styles.item} value={'education'}>Образование</Checkbox>
