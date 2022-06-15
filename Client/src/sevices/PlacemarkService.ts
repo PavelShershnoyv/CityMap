@@ -115,9 +115,10 @@ export const placemarkApi = createApi({
                     //@ts-ignore
                     bodyFormData.append(key, req.body[key]);
                 });
-                console.log(req.body.position)
-                bodyFormData.append('position.latitude', req.body.position.latitude.toString());
-                bodyFormData.append('position.longitude', req.body.position.longitude.toString());
+                bodyFormData.append('position.latitude',
+                    req.body.position.latitude.toString().replace('.', ','));
+                bodyFormData.append('position.longitude',
+                    req.body.position.longitude.toString().replace('.', ','));
                 bodyFormData.delete('position');
                 return {
                     url: `${req.layer}-marks`,

@@ -5,21 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5775d08c-06f2-4a51-9b04-40d3b3f1bed1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Client/src/components/modalFills/ProposalInfo/ProposalInfo.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/components/header/header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/components/header/header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/components/maps/ProposalPlacemarks.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/components/maps/ProposalPlacemarks.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/components/maps/mainMap.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/components/maps/mainMap.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/components/modalFills/AddPlacemark/AddPlacemarkMF.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/components/modalFills/AddPlacemark/AddPlacemarkMF.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/components/modalFills/DefaultPlacemarkInfo/DefaultPlacemarkInfo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/components/modalFills/DefaultPlacemarkInfo/DefaultPlacemarkInfo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/sevices/AuthService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/sevices/AuthService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/components/header/header.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/components/header/header.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/components/maps/map.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/components/maps/map.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/src/sevices/PlacemarkService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/sevices/PlacemarkService.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/types/PlacemarkTypes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/types/PlacemarkTypes.ts" afterDir="false" />
     </list>
-    <list id="72298545-bde5-4294-90ff-b5165c26d626" name="Changes by yovil" comment="">
-      <change beforePath="$PROJECT_DIR$/Client/src/components/Authorization/Login/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/components/Authorization/Login/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/components/Authorization/Registration/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/components/Authorization/Registration/index.tsx" afterDir="false" />
-    </list>
+    <list id="72298545-bde5-4294-90ff-b5165c26d626" name="Changes by yovil" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -141,6 +132,8 @@
       <workItem from="1655273075866" duration="2476000" />
       <workItem from="1655275632576" duration="5291000" />
       <workItem from="1655282218040" duration="11000" />
+      <workItem from="1655292735172" duration="844000" />
+      <workItem from="1655294836390" duration="443000" />
     </task>
     <servers />
   </component>
