@@ -7,6 +7,8 @@ import {DrawerWrapper} from '../drawerWrapper/DrawerWrapper';
 import styles from './map.module.css';
 import {ModalContext} from "../../context/modalContext";
 import {DefaultPlacemarkInfo} from "../modalFills/DefaultPlacemarkInfo/DefaultPlacemarkInfo";
+import {ProposalInfo} from "../modalFills/ProposalInfo/ProposalInfo";
+import { EventInfo } from '../modalFills/EventInfo/EventInfo';
 
 export const MainMap: React.FC<any> = ({children}) => {
     const [coordinates, setCoordinates] = useState([]);
@@ -26,6 +28,10 @@ export const MainMap: React.FC<any> = ({children}) => {
                 />
             case 'default':
                 return <DefaultPlacemarkInfo />
+            case 'proposals':
+                return <ProposalInfo />
+            case 'events':
+                return <EventInfo />
         }
     }
 

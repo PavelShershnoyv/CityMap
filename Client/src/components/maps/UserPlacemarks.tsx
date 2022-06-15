@@ -12,7 +12,7 @@ export const UserPlacemarks: React.FC = () => {
                     geometry={[pl.position.latitude, pl.position.longitude]}
                     properties={{iconCaption: pl.title}}
                     key={pl.position.latitude + pl.position.longitude}
-                    options={{iconColor: 'grey', preset: 'dotIcon'}}
+                    options={{iconColor: 'grey', preset: 'islands#circleIcon'}}
                 />
             )}
         </>

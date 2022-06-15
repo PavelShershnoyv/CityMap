@@ -24,7 +24,7 @@ export const DefaultPlacemarks: React.FC = () => {
                     geometry={[pl.position.latitude, pl.position.longitude]}
                     properties={{iconCaption: pl.title}}
                     key={pl.position.latitude + pl.position.longitude}
-                    options={{iconColor: colors[pl.type], preset: 'dotIcon'}}
+                    options={{iconColor: colors[pl.type], preset: 'islands#circleIcon'}}
                     onClick={() => {
                         setCurrentPlacemarkInfo({
                             id: pl.id || 0,

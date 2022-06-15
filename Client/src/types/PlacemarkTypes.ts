@@ -17,8 +17,8 @@ export interface IEventPlacemark extends IPlacemark {
     startDate: string;
 }
 
-export interface IProposalPlacemark extends IPlacemark {
-    positiveVotesPercentage: number;
+export interface IProposalPlacemark extends ITypedPlacemark {
+    positiveVotesCount: number;
 }
 
 export interface IBasePlacemarkRequest extends IPlacemark {
@@ -33,13 +33,13 @@ export interface IUnionRequestsType extends IBasePlacemarkRequest {
 }
 
 export const colors: { [index: string]: string } = {
-    administration: 'red',
+    administration: 'Crimson',
     other: 'grey',
-    education: 'purple',
-    production: 'orange',
-    sport: 'yellow',
-    security: 'blue',
-    medicine: 'aqua',
-    culture: 'green'
+    education: 'HotPink',
+    production: 'Coral',
+    sport: 'Gold',
+    security: 'MediumSlateBlue',
+    medicine: 'LightSkyBlue',
+    culture: 'LawnGreen'
 }
 

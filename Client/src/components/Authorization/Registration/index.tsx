@@ -1,17 +1,17 @@
-import { Button, Checkbox, Form, Input } from "antd";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { Button, Checkbox, Form, Input } from "antd";
 import { useLazyRegisterQuery } from "../../../sevices/AuthService";
 import { IRegisterRequest } from "../../../types/AuthTypes";
+import { useAppAction } from "../../../hooks/redux";
 import classes from "../AuthPage.module.css";
 
 const Registration = () => {
+  const { setUser } = useAppAction();
   const [register] = useLazyRegisterQuery();
   const navigate = useNavigate();
 
   const handleFinish = async (values: any) => {
-    console.log(values);
-
     const request: IRegisterRequest = {
       firstName: values.firstName,
       email: values.email,
@@ -20,10 +20,11 @@ const Registration = () => {
       rememberMe: !!values.remember
     };
 
-    console.log(request);
-
     try {
-      await register(request);
+      const user = await register(request).unwrap();
+      console.log(user);
+      setUser(user);
+      navigate('/');
     } catch {
     }
   }

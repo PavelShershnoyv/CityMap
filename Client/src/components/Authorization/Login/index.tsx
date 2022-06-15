@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { Form, Input, Button, Checkbox } from 'antd';
+import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { Form, Input, Button, Checkbox } from 'antd';
 import { useLazyLoginQuery } from "../../../sevices/AuthService";
 import { ILoginRequest } from "../../../types/AuthTypes";
+import { useAppAction } from "../../../hooks/redux";
 import classes from "../AuthPage.module.css";
 
 const Login = () => {
+  const {setUser} = useAppAction();
   const [login] = useLazyLoginQuery();
   const navigate = useNavigate();
 
@@ -17,7 +19,10 @@ const Login = () => {
     }
 
     try {
-      await login(request);
+      const user = await login(request).unwrap();
+      console.log(user);
+      setUser(user);
+      navigate('/');
     } catch {
     }
   }

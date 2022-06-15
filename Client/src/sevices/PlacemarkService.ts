@@ -7,15 +7,25 @@ export interface ICreateRequest {
     layer: string;
 }
 
+export interface IDeleteRequest {
+    id: number;
+    layer: string;
+}
+
 export interface ICurrentPlacemarkInfo {
     id: number;
     layer: string;
 }
 
+export interface ILikeRequest {
+    proposalId: number;
+    isPositive: true;
+}
+
 export const instance = axios.create({
     headers: {
         "Content-type": 'application/json'
-    }
+    },
 });
 
 export const axiosBaseQuery = ({ baseUrl }: { baseUrl: string } = { baseUrl: '' }): BaseQueryFn<{
@@ -41,7 +51,7 @@ export const axiosBaseQuery = ({ baseUrl }: { baseUrl: string } = { baseUrl: '' 
 export const placemarkApi = createApi({
     reducerPath: 'placemarkApi',
     baseQuery: axiosBaseQuery({ baseUrl: 'http://localhost:4683/api/' }),
-    tagTypes: ['Placemark'],
+    tagTypes: ['Placemark', 'Like'],
     endpoints: (build) => ({
         getDefaultPlacemarks: build.query<ITypedPlacemark[], string>({
             query: (type) => ({
@@ -55,7 +65,7 @@ export const placemarkApi = createApi({
                 url: 'proposals-marks',
                 method: 'GET'
             }),
-            providesTags: result => ['Placemark']
+            providesTags: result => ['Placemark', 'Like']
         }),
         getEvents: build.query<IEventPlacemark[], void>({
             query: () => ({
@@ -77,6 +87,27 @@ export const placemarkApi = createApi({
                 method: 'GET'
             })
         }),
+        getCurrentProposal: build.query<IProposalPlacemark, ICurrentPlacemarkInfo>({
+            query: (info) => ({
+                url: `proposals-marks/${info.id}`,
+                method: 'GET'
+            }),
+            providesTags: ['Like']
+        }),
+        getCurrentEvent: build.query<IEventPlacemark, ICurrentPlacemarkInfo>({
+            query: (info) => ({
+                url: `events-marks/${info.id}`,
+                method: 'GET',
+            })
+        }),
+        likeProposal: build.mutation<IProposalPlacemark, ILikeRequest>({
+            query: (req) => ({
+                url: `proposals-marks/${req.proposalId}/votes`,
+                method: 'POST',
+                data: req
+            }),
+            invalidatesTags: ['Like']
+        }),
         createPlacemark: build.mutation<number, ICreateRequest>({
             query: (req) => {
                 const bodyFormData = new FormData();
@@ -84,9 +115,10 @@ export const placemarkApi = createApi({
                     //@ts-ignore
                     bodyFormData.append(key, req.body[key]);
                 });
-
+                console.log(req.body.position)
                 bodyFormData.append('position.latitude', req.body.position.latitude.toString());
                 bodyFormData.append('position.longitude', req.body.position.longitude.toString());
+                bodyFormData.delete('position');
                 return {
                     url: `${req.layer}-marks`,
                     method: 'POST',
@@ -94,17 +126,28 @@ export const placemarkApi = createApi({
                 }
             },
             invalidatesTags: ['Placemark']
+        }),
+        deletePlacemark: build.mutation<void, IDeleteRequest>({
+            query: (req) => ({
+                url: `${req.layer}-marks/${req.id}`,
+                method: 'DELETE',
+            }),
+            invalidatesTags: ['Placemark']
         })
     })
 });
 
 export const {
     useGetCurrentPlacemarkQuery,
+    useGetCurrentProposalQuery,
+    useGetCurrentEventQuery,
     useGetDefaultPlacemarksQuery,
     useGetProposalPlacemarksQuery,
     useGetEventsQuery,
     useGetUserPlacemarksQuery,
-    useCreatePlacemarkMutation
+    useCreatePlacemarkMutation,
+    useLikeProposalMutation,
+    useDeletePlacemarkMutation
 } = placemarkApi;
 
 

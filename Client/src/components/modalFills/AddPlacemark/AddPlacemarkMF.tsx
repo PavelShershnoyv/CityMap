@@ -19,20 +19,20 @@ export const AddPlacemark: React.FC<IAddPlacemarkProps> = ({placemarkPosition, o
     const {type} = useParams();
     const [form] = Form.useForm();
     const [createPlacemark, {}] = useCreatePlacemarkMutation();
-    
+
     const onFinish = async (data: any) => {
         const body: IUnionRequestsType = {
             title: data.title,
             description: data.description,
             images: [],
-            address: '213', 
+            address: '-',
             position: {
                 latitude: placemarkPosition.latitude,
                 longitude: placemarkPosition.longitude
             }
         };
-
-        if (type === 'present' || type === 'past') {
+        console.log(body)
+        if (type === 'present' || type === 'past' || type === 'proposals') {
             body.type = 'sport';
         }
 

@@ -1,3 +1,8 @@
+export interface IUser {
+    firstName: string;
+    roles: string[];
+}
+
 export interface IRegisterRequest {
     email: string;
     firstName: string;
