@@ -1,8 +1,8 @@
 import React from 'react';
-import { Navigate, Outlet, Route } from 'react-router-dom';
+import { Navigate, Outlet } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 
-export const AuthRequeired: React.FC = () => {
+export const AuthRequired: React.FC = () => {
     const { isAuthenticated } = useAuth();
 
     if (!isAuthenticated) {

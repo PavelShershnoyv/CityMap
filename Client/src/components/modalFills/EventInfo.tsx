@@ -1,14 +1,14 @@
 import React, { useContext } from 'react';
-import {useAppSelector} from "../../../hooks/redux";
-import {getCurrentPlacemarkInfo} from "../../../store/reducers/placemarks";
+import {useAppSelector} from "../../hooks/redux";
+import {getCurrentPlacemarkInfo} from "../../store/reducers/placemarks";
 import {
     ICurrentPlacemarkInfo,
     useDeletePlacemarkMutation,
     useGetCurrentEventQuery
-} from "../../../sevices/PlacemarkService";
-import styles from '../styles.module.css';
-import { Button } from 'antd';
-import { ModalContext } from '../../../context/modalContext';
+} from "../../sevices/PlacemarkService";
+import styles from './styles.module.css';
+import {Button, Carousel} from 'antd';
+import { ModalContext } from '../../context/modalContext';
 
 export const EventInfo: React.FC = () => {
     const currentInfo = useAppSelector(getCurrentPlacemarkInfo);
@@ -27,8 +27,13 @@ export const EventInfo: React.FC = () => {
     return (
         <div style={{display: 'flex', flexDirection: 'column', gap: '5px'}}>
             <h2 className={styles.noMargin}>{info.title}</h2>
-            <h3 className={styles.noMargin}>Дата</h3>
-            <div>{info.startDate.split('T')[0]}</div>
+            <Carousel effect="fade">
+                {info.images.map((image, index) => (
+                    <img src={image.url} key={index} className={styles.border} height={'500px'}/>
+                ))}
+            </Carousel>
+            <h3 className={styles.noMargin}>Дата и время начала</h3>
+            <div>{info.startDate.split('T')[0]} / {info.startDate.split('T')[1].slice(0,5)}</div>
             <h3 className={styles.noMargin}>Адрес</h3>
             <div>{info.address}</div>
             <h3 className={styles.noMargin}>Описание</h3>

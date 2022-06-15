@@ -5,10 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5775d08c-06f2-4a51-9b04-40d3b3f1bed1" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Client/src/components/maps/PastPlacemarks.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Client/src/components/maps/Placemarks.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/components/header/header.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/components/header/header.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/components/maps/map.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/components/maps/map.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/components/header/header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/components/header/header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/components/maps/UserPlacemarks.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/components/maps/UserPlacemarks.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/components/maps/mainMap.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/components/maps/mainMap.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/components/modalFills/AddPlacemark/AddPlacemarkMF.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/components/modalFills/AddPlacemark/AddPlacemarkMF.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/components/modalFills/AddPlacemark/AddPlacemarkMF.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/components/modalFills/AddPlacemark/AddPlacemarkMF.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/components/modalFills/DefaultPlacemarkInfo/DefaultPlacemarkInfo.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/components/modalFills/EventInfo/EventInfo.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/components/modalFills/ProposalInfo/ProposalInfo.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/components/modalFills/styles.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/components/modalFills/styles.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/hooks/useAuth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/hooks/useAuth.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/sevices/AuthService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/sevices/AuthService.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/src/sevices/PlacemarkService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/sevices/PlacemarkService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/store/reducers/auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/store/reducers/auth.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/types/PlacemarkTypes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/types/PlacemarkTypes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/utils/AuthRequired.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/utils/AuthRequired.tsx" afterDir="false" />
     </list>
     <list id="72298545-bde5-4294-90ff-b5165c26d626" name="Changes by yovil" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -134,6 +149,9 @@
       <workItem from="1655282218040" duration="11000" />
       <workItem from="1655292735172" duration="844000" />
       <workItem from="1655294836390" duration="443000" />
+      <workItem from="1655295537171" duration="114000" />
+      <workItem from="1655306376943" duration="12435000" />
+      <workItem from="1655327940117" duration="308000" />
     </task>
     <servers />
   </component>

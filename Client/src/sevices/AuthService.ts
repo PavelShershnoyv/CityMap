@@ -1,8 +1,8 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
-import { axiosBaseQuery } from './PlacemarkService';
 import { IRegisterRequest, ILoginRequest, IUser } from '../types/AuthTypes';
 import axios, {AxiosError, AxiosRequestConfig} from "axios";
 import {BaseQueryFn} from "@reduxjs/toolkit/dist/query/react";
+import {axiosBaseQuery} from "./PlacemarkService";
 
 const accountApi = createApi({
     reducerPath: 'accountApi',

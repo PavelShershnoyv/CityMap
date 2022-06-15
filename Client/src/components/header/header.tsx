@@ -47,7 +47,7 @@ export const Header: React.FC = () => {
                 </div>
             </div>
             <div className={styles.button}>
-                <p>{isAuthenticated ? user.firstName : 'Войти'}</p>
+                <p>{isAuthenticated ? user?.firstName : 'Войти'}</p>
                 <button className={styles.headerBtn}>
                     <NavLink to="/account/login">
                         <UserOutlined className={styles.icon} />

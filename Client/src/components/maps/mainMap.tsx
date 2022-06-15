@@ -6,9 +6,11 @@ import {AddPlacemark} from '../modalFills/AddPlacemark/AddPlacemarkMF';
 import {DrawerWrapper} from '../drawerWrapper/DrawerWrapper';
 import styles from './map.module.css';
 import {ModalContext} from "../../context/modalContext";
-import {DefaultPlacemarkInfo} from "../modalFills/DefaultPlacemarkInfo/DefaultPlacemarkInfo";
-import {ProposalInfo} from "../modalFills/ProposalInfo/ProposalInfo";
-import { EventInfo } from '../modalFills/EventInfo/EventInfo';
+import {DefaultPlacemarkInfo} from "../modalFills/DefaultPlacemarkInfo";
+import {ProposalInfo} from "../modalFills/ProposalInfo";
+import {EventInfo} from '../modalFills/EventInfo';
+import {PastInfo} from "../modalFills/PastInfo";
+import { UserInfo } from '../modalFills/UserInfo';
 
 export const MainMap: React.FC<any> = ({children}) => {
     const [coordinates, setCoordinates] = useState([]);
@@ -27,11 +29,15 @@ export const MainMap: React.FC<any> = ({children}) => {
                     onCloseModal={handleCancel}
                 />
             case 'default':
-                return <DefaultPlacemarkInfo />
+                return <DefaultPlacemarkInfo/>
             case 'proposals':
-                return <ProposalInfo />
+                return <ProposalInfo/>
             case 'events':
-                return <EventInfo />
+                return <EventInfo/>
+            case 'past':
+                return <PastInfo/>
+            case 'user':
+                return <UserInfo/>
         }
     }
 
@@ -83,8 +89,7 @@ export const MainMap: React.FC<any> = ({children}) => {
                 visible={visibleModal}
                 onCancel={handleCancel}
                 centered={true}
-                footer={null}
-            >
+                footer={null}>
                 {getModalFill()}
             </Modal>
         </div>

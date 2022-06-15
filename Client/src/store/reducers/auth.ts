@@ -2,12 +2,16 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IUser } from "../../types/AuthTypes";
 import { RootState } from "../store";
 
+interface IUserTry {
+    user?: IUser;
+}
+
 export const authSlice = createSlice({
     name: 'auth',
-    initialState: null as unknown as IUser,
+    initialState: {} as IUserTry,
     reducers: {
         setUser(state, action: PayloadAction<IUser>) {
-            state = action.payload
+            state.user = action.payload
         }
     }
 });

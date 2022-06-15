@@ -1,17 +1,17 @@
 import React, { useContext } from 'react';
-import { useAppSelector } from "../../../hooks/redux";
-import { getCurrentPlacemarkInfo } from "../../../store/reducers/placemarks";
+import { useAppSelector } from "../../hooks/redux";
+import { getCurrentPlacemarkInfo } from "../../store/reducers/placemarks";
 import {
     ICurrentPlacemarkInfo,
     ILikeRequest,
     useDeletePlacemarkMutation,
     useGetCurrentProposalQuery,
     useLikeProposalMutation
-} from "../../../sevices/PlacemarkService";
-import styles from '../styles.module.css';
+} from "../../sevices/PlacemarkService";
+import styles from './styles.module.css';
 import { LikeOutlined } from "@ant-design/icons";
-import { Button } from 'antd';
-import { ModalContext } from '../../../context/modalContext';
+import {Button, Carousel} from 'antd';
+import { ModalContext } from '../../context/modalContext';
 
 export const ProposalInfo: React.FC = () => {
     const currentInfo = useAppSelector(getCurrentPlacemarkInfo);
@@ -49,6 +49,11 @@ export const ProposalInfo: React.FC = () => {
                     />
                 </div>
             </div>
+            <Carousel effect="fade">
+                {info.images.map((image, index) => (
+                    <img src={image.url} key={index} className={styles.border}/>
+                ))}
+            </Carousel>
             <h3 className={styles.noMargin}>Адрес</h3>
             <div>{info && info.address}</div>
             <h3 className={styles.noMargin}>Описание</h3>

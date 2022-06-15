@@ -1,14 +1,16 @@
 import { createApi, BaseQueryFn } from '@reduxjs/toolkit/query/react';
-import { IPlacemark, IProposalPlacemark, ITypedPlacemark, IUnionRequestsType, IEventPlacemark } from '../types/PlacemarkTypes';
+import {
+    IPlacemark,
+    IProposalPlacemark,
+    ITypedPlacemark,
+    IUnionRequestsType,
+    IEventPlacemark,
+    IBasePlacemarkRequest
+} from '../types/PlacemarkTypes';
 import axios, { AxiosError, AxiosRequestConfig } from 'axios';
 
 export interface ICreateRequest {
     body: IUnionRequestsType;
-    layer: string;
-}
-
-export interface IDeleteRequest {
-    id: number;
     layer: string;
 }
 
@@ -26,6 +28,7 @@ export const instance = axios.create({
     headers: {
         "Content-type": 'application/json'
     },
+    withCredentials: true
 });
 
 export const axiosBaseQuery = ({ baseUrl }: { baseUrl: string } = { baseUrl: '' }): BaseQueryFn<{
@@ -58,30 +61,30 @@ export const placemarkApi = createApi({
                 url: `${type}-marks`,
                 method: 'GET'
             }),
-            providesTags: result => ['Placemark']
+            providesTags: ['Placemark']
         }),
         getProposalPlacemarks: build.query<IProposalPlacemark[], void>({
             query: () => ({
                 url: 'proposals-marks',
                 method: 'GET'
             }),
-            providesTags: result => ['Placemark', 'Like']
+            providesTags:['Placemark', 'Like']
         }),
         getEvents: build.query<IEventPlacemark[], void>({
             query: () => ({
                 url: 'events-marks',
                 method: 'GET'
             }),
-            providesTags: result => ['Placemark']
+            providesTags: ['Placemark']
         }),
         getUserPlacemarks: build.query<IPlacemark[], void>({
             query: () => ({
                 url: 'user-marks',
                 method: 'GET'
             }),
-            providesTags: result => ['Placemark']
+            providesTags: ['Placemark']
         }),
-        getCurrentPlacemark: build.query<IPlacemark, ICurrentPlacemarkInfo>({
+        getCurrentPlacemark: build.query<IBasePlacemarkRequest, ICurrentPlacemarkInfo>({
             query: (info) => ({
                 url: `${info.layer}-marks/${info.id}`,
                 method: 'GET'
@@ -128,7 +131,7 @@ export const placemarkApi = createApi({
             },
             invalidatesTags: ['Placemark']
         }),
-        deletePlacemark: build.mutation<void, IDeleteRequest>({
+        deletePlacemark: build.mutation<void, ICurrentPlacemarkInfo>({
             query: (req) => ({
                 url: `${req.layer}-marks/${req.id}`,
                 method: 'DELETE',

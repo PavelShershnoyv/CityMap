@@ -5,7 +5,7 @@ import { IUser } from '../types/AuthTypes';
 
 export interface IAuthenticatedUser {
     isAuthenticated: boolean;
-    user: IUser;
+    user?: IUser;
 }
 
 export const useAuth = (): IAuthenticatedUser => {
@@ -14,6 +14,6 @@ export const useAuth = (): IAuthenticatedUser => {
 
     return {
         isAuthenticated: !!authCookie,
-        user: user
+        user: user.user
     }
 }
