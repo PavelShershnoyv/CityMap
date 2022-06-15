@@ -8,6 +8,7 @@ import Login from "./components/Authorization/Login";
 import { ProposalPlacemarks } from "./components/maps/ProposalPlacemarks";
 import { Events } from "./components/maps/Events";
 import "./App.css";
+import { About } from "./components/About/About";
 
 function App() {
   return (
@@ -22,9 +23,10 @@ function App() {
           <Route path="proposals" element={<ProposalPlacemarks />} />
           <Route path="events" element={<Events />} />
         </Route>
+        <Route path="/about" element={<About />} />
         <Route path="/account" element={<AuthPage />}>
-          <Route index element={<Navigate to="login" replace={true} />} />
-          <Route path='login' element={<Login />} />
+          <Route index element={<Navigate to="login" />} />
+          <Route path="login" element={<Login />} />
           <Route path="registration" element={<Registration />} />
         </Route>
         <Route path="*" element={<Navigate to='/' replace={true} />} />

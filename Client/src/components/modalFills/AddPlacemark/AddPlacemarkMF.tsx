@@ -29,18 +29,14 @@ export const AddPlacemark: React.FC<IAddPlacemarkProps> = ({placemarkPosition, o
             position: {
                 latitude: placemarkPosition.latitude,
                 longitude: placemarkPosition.longitude
-            }
+            },
+            type: 'sport'
         };
-        console.log(body)
-        if (type === 'present' || type === 'past' || type === 'proposals') {
-            body.type = 'sport';
-        }
 
         const req: ICreateRequest = {
             layer: type ? type : 'user',
             body: body
         }
-        console.log(req);
         await createPlacemark(req);
 
         form.resetFields();

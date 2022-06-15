@@ -7,6 +7,7 @@ export interface IPlacemark {
     address: string;
     id?: number;
     description?: string;
+    type?: string;
 }
 
 export interface ITypedPlacemark extends IPlacemark {

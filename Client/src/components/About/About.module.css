@@ -1,0 +1,46 @@
+.content {
+  background-color: #F5F5C9;
+  background-size: 100% auto;
+}
+
+.mainContent {
+  max-width: 1920px;
+  padding: 0px 15px;
+  margin: auto;
+}
+
+.firstContent {
+  display: flex;
+  padding-top: 15px;
+}
+
+.text {
+  font-family: "Slackey";
+  font-size: 30px;
+  text-align: justify;
+}
+
+.text p {
+  text-indent: 20px;
+  margin: 0;
+}
+
+.text span {
+  font-weight: bold;
+}
+
+.firstText {
+  margin-right: 60px;
+}
+
+.secondText {
+  margin-left: 60px;
+}
+
+.image {
+  margin-bottom: 15px;
+}
+
+.secondContent {
+  display: flex;
+}
