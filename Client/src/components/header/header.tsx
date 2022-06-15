@@ -27,10 +27,10 @@ export const Header: React.FC = () => {
                 </div>
                 <div className={styles.nav}>
                     <NavLink to="/present" className={styles.navElem}>
-                        Реж <br /> прошлого
+                        Реж <br /> настоящего
                     </NavLink>
                     <NavLink to="/past" className={styles.navElem}>
-                        Реж <br /> настоящего
+                        Реж <br /> прошлого
                     </NavLink>
                     <NavLink to="/proposals" className={styles.navElem}>
                         Реж <br /> будущего
