@@ -32,7 +32,10 @@ export const DefaultPlacemarkInfo: React.FC = () => {
                         <img src={image.url} key={index} className={styles.border}/>
                 ))}
             </Carousel>
-            <div style={{marginBottom: '8px'}}><strong>Адрес:</strong> {info.address}</div>
+            <h3 className={styles.noMargin}>Адрес</h3>
+            <div>{info.address}</div>
+            <h3 className={styles.noMargin}>Описание</h3>
+            <div style={{marginBottom: '8px'}}>{info.description}</div>
             <Button danger onClick={async () => {
                 await deletePlacemark(req);
                 setVisibleModal(false);
